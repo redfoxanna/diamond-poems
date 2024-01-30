@@ -1,20 +1,24 @@
 # Diamond Poem Archives
 
-This repository will serve as an example for Madison College's Enterprise Java Class.
+---
 
-### Problem Statement
+## Problem Statement
 
-At the beginning of our game nights, we often kick things off with a warm-up we've coined "Diamond Poems." It's a collaborative poem writing exercise where each person contributes one line at a time on scraps of paper, with only the previous line visible. This unique format leads to the creation of hilarious, creative, and sometimes thought-provoking poems.
+At the beginning of our weekly Thursday game night, my friends and I often kick things off with a warm-up we've coined "Diamond Poems." It's a collaborative poem writing exercise where each person contributes one line at a time on scraps of paper, with only the previous line visible. This unique format leads to the creation of hilarious, creative, and sometimes thought-provoking poems.
 But, as the night winds down, these poetic masterpieces face an uncertain fate – they're scattered, misplaced, and often lost to the night. Well, almost all of them, because there's this one friend (*ahem* Brooke!) who manages to collect and safeguard them all.
-Enter my indie project idea: envision a Java application that would interface with an Optical Character Recognition (OCR) API. This would transform the images of our handwritten Diamond Poems into searchable text. Now, no longer will these poetic gems be lost to the passage of time. They're immortalized, ready to be easily retrieved whenever the waves of nostalgia hit.
 
-Screenshot examples of a diamond poem:
+Enter my project idea: envision a Java application that would interface with an Optical Character Recognition (OCR) API. This would transform the images of our handwritten Diamond Poems into searchable text. Now, no longer will these poetic gems be lost to the passage of time. They're immortalized, ready to be easily retrieved whenever the waves of nostalgia hit.
 
-![Trail Description](images/MirrorLakeTrailExample.png)
+Examples of a diamond poem:
 
-![Trail Report](images/MadisonAreaExample.png)
+[Diamond poem example](images/diamond1.png)
 
+[Diamond poem example 2](images/diamond2.png)
 
+Diamond Poems (the writing exercise) is inspired by:
+[Diamonte Poems Wikipedia](https://en.wikipedia.org/wiki/Diamante_poem#:~:text=A%20diamante%20poem%2C%20or%20diamond,%3A%20The%20Diamante%20(1969))
+
+---
 ### Project Technologies/Techniques
 
 * Security/Authentication
@@ -26,9 +30,9 @@ Screenshot examples of a diamond poem:
 * Dependency Management
     * Maven
 * Web Services consumed using Java
-    * 
+    * Textract
 * CSS
-    * Bootstrap or Materialize (tbd)
+    * Bootstrap
 * Data Validation
     * Bootstrap Validator for front end
     * Explore Hibernate's validation
@@ -47,20 +51,20 @@ Screenshot examples of a diamond poem:
     * JUnit tests to achieve 80%+ code coverage
 * IDE: IntelliJ IDEA
 
+---
 
 ### Design
 
-* [User Stories](DesignDocuments/userStories.md)
+* [User Stories](DesignDocuments/user-stories.md)
 * [Tasks](DesignDocuments/tasks.md)
-* [Screen Design](DesignDocuments/Screens.md)
-* [Application Flow](DesignDocuments/applicationFlow.md)
+* [Screen Design](DesignDocuments/screen-designs.md)
+* [Design Considerations](DesignDocuments/design-considerations.pdf)
+* [Application Flow](DesignDocuments/diamond-poems-flowchart.pdf)
 * [Database Design](DesignDocuments/databaseDiagram.png)
 
-### [Project Plan](ProjectPlan.md)
+### Project Planning
+
+[Error Handing OCR](DesignDocuments/error-handling.pdf)
 
 ### Examples of documentation of progress, reflections, and time spent on this class
-Choose a format that works for you, or create your own.
-
 #### [Weekly Refelection](WeeklyReflection.md)
-#### [Journal](Journal.md)
-#### [TimeLog](TimeLog.md)
