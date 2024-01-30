@@ -32,9 +32,11 @@ I also started looking at a few different services that could be used for OCR:
 ### Week 3
 
 Time spent: 
-1/29/24- 
+1/29/24- 3 hours
 
 Tasks Completed:
-*
+* Wrote user stories
+* Created a design considerations document
+* Completed initial flowchart for diamond-poems
 
 ### Week 4
