@@ -63,9 +63,15 @@ Tasks completed:
 * Act 1 
 * Started exercise 3
 
-**Time spent 2/2/24 - **
+**Time spent 2/2/24 - 2 hours**
 
 Tasks completed:
-* Finished exercise 3
+* Finished exercise 3 while watching demo video
 ---
 ### Week 4
+**Time spent: 2/6/24 -**
+
+Tasks completed:
+Readings for week 4
+
+---
