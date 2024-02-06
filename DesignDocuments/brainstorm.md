@@ -13,7 +13,8 @@ I will need to update this as I learn more about integrating the database and up
 * UserController.java --> Handles user signup, login, and user authentication.
 * PoemController.java --> Manages the creation, retrieval, and editing of poems.
 * OCRController.java --> Communicates with the OCR API to extract text from the uploaded image. 
-
+* SearchController.java --> Handles search-related logic and communicates with the database to retrieve search results.
+* 
 ### View
 * signup.jsp
 * login.jsp

@@ -22,7 +22,7 @@ Diamond Poems (the writing exercise) is inspired by:
 ### Project Technologies/Techniques
 
 * Security/Authentication
-    * Tomcat's JDBC Realm Authentication
+    * AWS Cognito
 * Database
     * MySQL 8.0.22
 * ORM Framework
@@ -30,7 +30,7 @@ Diamond Poems (the writing exercise) is inspired by:
 * Dependency Management
     * Maven
 * Web Services consumed using Java
-    * Textract
+    * AWS Textract
 * CSS
     * Bootstrap
 * Data Validation
@@ -48,7 +48,7 @@ Diamond Poems (the writing exercise) is inspired by:
     * Hibernate Search
 * Project Lombok
 * Unit Testing
-    * JUnit tests to achieve 80%+ code coverage
+    * JUnit 5 tests to achieve 80%+ code coverage
 * IDE: IntelliJ IDEA
 
 ---
@@ -64,7 +64,7 @@ Diamond Poems (the writing exercise) is inspired by:
 
 ### Project Planning
 
-[Error Handing OCR](DesignDocuments/error-handling.pdf)
+* [Error Handing OCR](DesignDocuments/error-handling.pdf)
 
-### Examples of documentation of progress, reflections, and time spent on this class
-#### [Weekly Refelection](WeeklyReflection.md)
+### Documentation of progress, reflections, and time spent on this class
+* [Weekly Refelection](WeeklyReflection.md)
