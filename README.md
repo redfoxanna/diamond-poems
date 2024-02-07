@@ -54,17 +54,15 @@ Diamond Poems (the writing exercise) is inspired by:
 ---
 
 ### Design
-
-* [User Stories](DesignDocuments/user-stories.md)
-* [Tasks](DesignDocuments/tasks.md)
-* [Screen Design](DesignDocuments/screen-designs.md)
+* [Screen Design](DesignDocuments/Wireframes)
 * [Design Considerations](DesignDocuments/design-considerations.pdf)
 * [Application Flow](DesignDocuments/diamond-poems-flowchart.pdf)
 * [Database Design](DesignDocuments/databaseDiagram.png)
 
 ### Project Planning
-
+* [User Stories](DesignDocuments/user-stories.md)
 * [Error Handing OCR](DesignDocuments/error-handling.pdf)
+* [Tasks](DesignDocuments/project-plan.md)
 
 ### Documentation of progress, reflections, and time spent on this class
 * [Weekly Refelection](WeeklyReflection.md)
