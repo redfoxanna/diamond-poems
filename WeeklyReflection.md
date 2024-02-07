@@ -69,9 +69,16 @@ Tasks completed:
 * Finished exercise 3 while watching demo video
 ---
 ### Week 4
-**Time spent: 2/6/24 -**
+**Time spent: 2/6/24 - 2.5 hours**
 
 Tasks completed:
-Readings for week 4
+* Readings for week 4
+* Started videos for week 4
+
+**Time spent 2/7/24 -  hours**
+
+Tasks completed:
+* Finished up planning weekly tasks to complete my project by deadline
+* 
 
 ---
