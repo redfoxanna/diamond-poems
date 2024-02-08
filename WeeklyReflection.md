@@ -75,10 +75,17 @@ Tasks completed:
 * Readings for week 4
 * Started videos for week 4
 
-**Time spent 2/7/24 -  hours**
+**Time spent 2/7/24 -  3 hours**
 
 Tasks completed:
 * Finished up planning weekly tasks to complete my project by deadline
-* 
+* Continued watching the videos for the week while following along in my own code base
+* Started coding for my User class
+
+**Time spent 2/8/24 - hours**
+
+Tasks completed:
+* Finished up the videos for week 4
+* Started coding for exercise 4
 
 ---
