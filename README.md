@@ -60,7 +60,7 @@ Diamond Poems (the writing exercise) is inspired by:
 * [Database Design](DesignDocuments/databaseDiagram.png)
 
 ### Project Planning
-* [User Stories](DesignDocuments/user-stories.md)
+* [com.redfoxanna.entity.User Stories](DesignDocuments/user-stories.md)
 * [Error Handing OCR](DesignDocuments/error-handling.pdf)
 * [Tasks](DesignDocuments/project-plan.md)
 

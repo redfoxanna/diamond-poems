@@ -1,3 +1,5 @@
+package com.redfoxanna.entity;
+
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -33,13 +35,13 @@ public class User {
     private int id;
 
     /**
-     * Instantiates a new User.
+     * Zero-arg constructor that instantiates a new User.
      */
     public User() {
     }
 
     /**
-     * Instantiates a new User.
+     * Instantiates a new User with parameters
      *
      * @param firstName the first name
      * @param lastName  the last name
@@ -144,5 +146,19 @@ public class User {
     public void setUserStatus(String userStatus) {
         this.userStatus = userStatus;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", userName='" + userName + '\'' +
+                ", userStatus='" + userStatus + '\'' +
+                ", id=" + id +
+                '}';
     }
+}
+
+
+
 
