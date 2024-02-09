@@ -42,18 +42,19 @@ and ranking system.
 
 ---
 
-### Week 8-9: 
-Edit and Contributor View
+### Week 8-9: Edit and Contributor View
 
-Task 1: Develop functionality for editing/making corrections to poems
-Task 2: Implement feature to view all contributors to a poem
-Task 3: Test edit and contributor view functionality
-Task 4: Refactor and optimize code as needed
+**Task 1:** Develop functionality for editing/making corrections to poems
+
+**Task 2:** Implement feature to view all contributors to a poem
+
+**Task 3:** Test edit and contributor view functionality
+
+**Task 4:** Refactor and optimize code as needed
+
 ---
 
-### Week 10-13:###
-
-Admin Features, Ranking System, and Final Polish
+### Week 10-13: Admin Features, Ranking System, and Final Polish
 
 **Task 1:** Implement admin features for adding/editing/deleting poems
 
@@ -67,9 +68,10 @@ Admin Features, Ranking System, and Final Polish
 
 ---
 
-### Week 14-16###
+### Week 14-16 Final Touches
 
 **Task 1:** Peer code reviews and edits
+
 **Task 2:** Record and give final presentation of application
 
 
