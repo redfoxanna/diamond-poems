@@ -127,7 +127,7 @@ public class User {
     /**
      * Gets user's status.
      *
-     * @return the date of birth
+     * @return the user's status
      */
     public String getUserStatus() {
         return userStatus;
