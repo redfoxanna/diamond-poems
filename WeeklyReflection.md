@@ -75,17 +75,28 @@ Tasks completed:
 * Readings for week 4
 * Started videos for week 4
 
-**Time spent 2/7/24 -  3 hours**
+**Time spent 2/7/24 - 3 hours**
 
 Tasks completed:
 * Finished up planning weekly tasks to complete my project by deadline
 * Continued watching the videos for the week while following along in my own code base
 * Started coding for my User class
 
-**Time spent 2/8/24 - hours**
+**Time spent 2/8/24 - 3 hours**
 
 Tasks completed:
-* Finished up the videos for week 4
+* Continued with the videos for week 4
 * Started coding for exercise 4
+* Code for UserDao and UserDaoTest
+
+**Time spent 2/9/24- 3 hours**
+
+Tasks completed:
+* Finished up exercise 4
+* Finished up the week 4 videos
+
+I got stuck for a bit when I created my test database and 
+forgot to change my database.properties to the test database.
+
 
 ---
