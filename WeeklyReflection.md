@@ -100,3 +100,17 @@ forgot to change my database.properties to the test database.
 
 
 ---
+
+### Week 5
+
+**Time spent 2/12/24- 1 hour**
+
+Tasks completed:
+* Readings for week 5
+
+**Time spent 2/13/24** 
+
+Tasks completed: 
+* Started week 5 videos 
+* Started the Poem class
+* Designed the Poem table 
