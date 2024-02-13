@@ -11,9 +11,13 @@ Enter my project idea: envision a Java application that would interface with an 
 
 Examples of a diamond poem:
 
-[Diamond poem example](images/diamond1.png)
+[Diamond poem example *cute*](images/poem1.jpg)
 
-[Diamond poem example 2](images/diamond2.png)
+[Diamond poem example *sweet*](images/poem2.jpg)
+
+[Diamond poem example *dark*](images/poem3.jpg)
+
+[Diamond poem example *explicit*](images/poem4.jpg)
 
 Diamond Poems (the writing exercise) is inspired by:
 [Diamonte Poems Wikipedia](https://en.wikipedia.org/wiki/Diamante_poem#:~:text=A%20diamante%20poem%2C%20or%20diamond,%3A%20The%20Diamante%20(1969))
