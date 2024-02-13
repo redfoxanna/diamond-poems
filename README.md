@@ -11,13 +11,13 @@ Enter my project idea: envision a Java application that would interface with an 
 
 Examples of a diamond poem:
 
-[Diamond poem example *cute*](images/poem1.jpg)
+[Diamond poem *cute* example](images/poem1.jpg)
 
-[Diamond poem example *sweet*](images/poem2.jpg)
+[Diamond poem *sweet* example](images/poem2.jpg)
 
-[Diamond poem example *dark*](images/poem3.jpg)
+[Diamond poem *dark* example](images/poem3.jpg)
 
-[Diamond poem example *explicit*](images/poem4.jpg)
+[Diamond poem *profane* example](images/poem4.jpg)
 
 Diamond Poems (the writing exercise) is inspired by:
 [Diamonte Poems Wikipedia](https://en.wikipedia.org/wiki/Diamante_poem#:~:text=A%20diamante%20poem%2C%20or%20diamond,%3A%20The%20Diamante%20(1969))
@@ -46,7 +46,6 @@ Diamond Poems (the writing exercise) is inspired by:
     * AWS
 * Independent Research Topic/s
     * CI tools in AWS
-    * Materialize
     * OCR API
     * Hibernate Validation
     * Hibernate Search
