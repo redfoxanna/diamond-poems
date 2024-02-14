@@ -108,9 +108,14 @@ forgot to change my database.properties to the test database.
 Tasks completed:
 * Readings for week 5
 
-**Time spent 2/13/24** 
+**Time spent 2/13/24- 2.5 hours** 
 
-Tasks completed: 
+Tasks completed: 2 hours
 * Started week 5 videos 
 * Started the Poem class
 * Designed the Poem table 
+
+**Time spent 2/14/24- **
+
+Tasks completed:
+* Refactored code to add user's email and birthdate
