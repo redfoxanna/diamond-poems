@@ -5,6 +5,7 @@ import com.redfoxanna.util.Database;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -40,7 +41,7 @@ class UserDaoTest {
     @Test
     void testInsertSuccess() {
         userDao = new UserDao();
-        User userToInsert = new User("Fox", "Mulder", "truth", "user");
+        User userToInsert = new User("Fox", "Mulder", "truth", "user", "want2Blieve@xfiles.com", "1969-10-13");
         int insertedUserId = userDao.insert(userToInsert);
         assertNotEquals(0, insertedUserId);
         User insertedUser = userDao.getById(insertedUserId);
