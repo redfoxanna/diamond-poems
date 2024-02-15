@@ -13,6 +13,10 @@ import org.hibernate.query.criteria.HibernateCriteriaBuilder;
 
 import java.util.List;
 
+/**
+ *
+ * @author akessler
+ */
 public class UserDao {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
