@@ -4,14 +4,17 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
+import java.time.temporal.ChronoUnit;
 
 
 /**
- * The type User.
+ * The User class
  *
- * @author akessler
+ * @author redfoxanna
  */
-@Entity
+@Entity(name="User")
 @Table(name = "user") // case sensitive!
 public class User {
     @Column(name = "first_name")
@@ -30,7 +33,7 @@ public class User {
     private String userEmail;
 
     @Column(name = "birthdate")
-    private String dateOfBirth;
+    private LocalDate dateOfBirth;
 
     // Every Entity must have a unique identifier which is annotated @Id
     // Notice there is no @Column here as the column and instance variable name are the same
@@ -38,6 +41,8 @@ public class User {
     @GeneratedValue(strategy= GenerationType.AUTO, generator="native")
     @GenericGenerator(name = "native",strategy = "native")
     private int id;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST, orphanRemoval = false, fetch = FetchType.EAGER)
+    private Set<Poem> poems = new HashSet<>();
 
     /**
      * Zero-arg constructor that instantiates a new User.
@@ -53,7 +58,6 @@ public class User {
      * @param userName  the username
      * @param userStatus the user's status
      * @param userEmail the user's email address
-     * @param dateOfBirth the user's birthdate
      */
     public User(String firstName, String lastName, String userName, String userStatus, String userEmail, String dateOfBirth) {
         this.firstName = firstName;
@@ -61,9 +65,7 @@ public class User {
         this.userName = userName;
         this.userStatus = userStatus;
         this.userEmail = userEmail;
-        this.dateOfBirth = dateOfBirth;
     }
-
 
     /**
      * Gets first name.
@@ -174,7 +176,7 @@ public class User {
      *
      * @return the date of birth
      */
-    public String getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
@@ -183,8 +185,18 @@ public class User {
      *
      * @param dateOfBirth the date of birth
      */
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    /**
+     * Gets age.
+     *
+     * @return the age
+     */
+    public int getAge() {
+
+        return (int)ChronoUnit.YEARS.between(dateOfBirth, LocalDate.now());
     }
 
     /**
