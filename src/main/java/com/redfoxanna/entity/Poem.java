@@ -7,10 +7,12 @@ import java.sql.Timestamp;
 import java.util.List;
 
 /**
- * The type Poem.
+ * The Poem class
+ *
+ * @author redfoxanna
  */
 @Entity(name="Poem")
-@Table(name = "poem") // TODO: Create the poem table
+@Table(name = "poem")
 public class Poem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
@@ -20,12 +22,18 @@ public class Poem {
     private String content;
     @Column(name="poem_image")
     private String poemImage; // TODO: How handle images?
-    @Column(name = "user_id")
-    private int userId;
+    @ManyToOne
+    private User user = new User();
     @Column(name="created_at")
     private Timestamp createdAt;
     @Column(name="poem_tags")
     private String genreTags;
+
+    /**
+     * No arg constructor
+     */
+    public Poem() {
+    }
 
     /**
      * Gets id.
@@ -82,21 +90,19 @@ public class Poem {
     }
 
     /**
-     * Gets user id.
-     *
-     * @return the user id
+     * Gets the user id of poem author
+     * @return the user's id
      */
-    public int getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
     /**
-     * Sets user id.
-     *
-     * @param userId the user id
+     * Sets the user's id
+     * @param user the user object
      */
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     /**
@@ -145,7 +151,7 @@ public class Poem {
                 "id=" + id +
                 ", content='" + content + '\'' +
                 ", poemImage='" + poemImage + '\'' +
-                ", userId=" + userId +
+                ", userId=" + user +
                 ", createdAt=" + createdAt +
                 ", genreTags='" + genreTags + '\'' +
                 '}';
