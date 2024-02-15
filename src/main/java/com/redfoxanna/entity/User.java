@@ -3,9 +3,13 @@ package com.redfoxanna.entity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.time.LocalDate;
+
 
 /**
  * The type User.
+ *
+ * @author akessler
  */
 @Entity
 @Table(name = "user") // case sensitive!
@@ -25,12 +29,15 @@ public class User {
     @Column(name = "user_email")
     private String userEmail;
 
+    @Column(name = "birthdate")
+    private String dateOfBirth;
+
     // Every Entity must have a unique identifier which is annotated @Id
     // Notice there is no @Column here as the column and instance variable name are the same
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO, generator="native")
     @GenericGenerator(name = "native",strategy = "native")
-    private int userId;
+    private int id;
 
     /**
      * Zero-arg constructor that instantiates a new User.
@@ -46,13 +53,15 @@ public class User {
      * @param userName  the username
      * @param userStatus the user's status
      * @param userEmail the user's email address
+     * @param dateOfBirth the user's birthdate
      */
-    public User(String firstName, String lastName, String userName, String userStatus, String userEmail) {
+    public User(String firstName, String lastName, String userName, String userStatus, String userEmail, String dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
         this.userStatus = userStatus;
         this.userEmail = userEmail;
+        this.dateOfBirth = dateOfBirth;
     }
 
 
@@ -115,15 +124,15 @@ public class User {
      *
      * @return the user id
      */
-    public int getUserId() {
-        return userId;
+    public int getId() {
+        return id;
     }
 
     /**
      * Sets user id
-     * @param userId the user id
+     * @param id the user id
      */
-    public void setUserId(int userId) {this.userId = userId;}
+    public void seId(int id) {this.id = id;}
 
     /**
      * Gets user's status.
@@ -159,6 +168,25 @@ public class User {
         this.userEmail = userEmail;
     }
 
+
+    /**
+     * Gets date of birth.
+     *
+     * @return the date of birth
+     */
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    /**
+     * Sets date of birth.
+     *
+     * @param dateOfBirth the date of birth
+     */
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
     /**
      * Returns all values formatted
      * @return the User instance variables with values
@@ -171,7 +199,8 @@ public class User {
                 ", userName='" + userName + '\'' +
                 ", userStatus='" + userStatus + '\'' +
                 ", userEmail='" + userEmail + '\'' +
-                ", userId='" + userId +
+                ", birthdate='" + dateOfBirth + '\'' +
+                ", userId='" + id +
                 '}';
     }
 }
