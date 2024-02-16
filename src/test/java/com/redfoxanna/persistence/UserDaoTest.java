@@ -16,18 +16,17 @@ class UserDaoTest {
     void setUp() {
         Database database = Database.getInstance();
         database.runSQL("cleanDB.sql");
+        userDao = new UserDao();
     }
 
     @Test
     void getByIdSuccess() {
-        userDao = new UserDao();
         User retrievedUser = userDao.getById(1);
         assertNotNull(retrievedUser);
         assertEquals("Anna", retrievedUser.getFirstName());
     }
     @Test
     void testUpdateSuccess() {
-        userDao = new UserDao();
         User userToUpdate = userDao.getById(1);
         userToUpdate.setLastName("Banana");
         userDao.update(userToUpdate);
@@ -40,7 +39,6 @@ class UserDaoTest {
 
     @Test
     void testInsertSuccess() {
-        userDao = new UserDao();
         User userToInsert = new User("Fox", "Mulder", "truth", "user", "want2Blieve@xfiles.com", "1969-10-13");
         int insertedUserId = userDao.insert(userToInsert);
         assertNotEquals(0, insertedUserId);
@@ -50,21 +48,18 @@ class UserDaoTest {
 
     @Test
     void testDeleteSuccess() {
-        userDao = new UserDao();
         userDao.delete(userDao.getById(1));
         assertNull(userDao.getById(1));
     }
 
     @Test
     void testGetAllSuccess() {
-        userDao = new UserDao();
         List<User> users = userDao.getAll();
         assertEquals(1, users.size());
     }
 
     @Test
     void testGetByPropertyEqualSuccess() {
-        userDao = new UserDao();
         List<User> users = userDao.getByPropertyLike("lastName", "Kessler");
         assertEquals(1, users.size());
         assertEquals(1, users.get(0).getId());
@@ -72,7 +67,6 @@ class UserDaoTest {
 
     @Test
     void testGetByPropertyLike() {
-        userDao = new UserDao();
         List<User> users = userDao.getByPropertyLike("lastName", "K");
         assertEquals(1, users.size());
     }
