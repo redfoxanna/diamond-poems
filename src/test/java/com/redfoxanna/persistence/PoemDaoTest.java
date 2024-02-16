@@ -32,7 +32,11 @@ class PoemDaoTest {
     @Test
     void update() {
         Poem poem = poemDao.getById(1);
-        poem.setPoemImage("");
+        poem.setPoemImage("poem3.jpg");
+        poemDao.update(poem);
+
+        Poem retrievedPoem = poemDao.getById(1);
+        assertEquals("poem3.jpg", retrievedPoem.getPoemImage());
 
     }
 
