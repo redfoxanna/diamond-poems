@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.time.temporal.ChronoUnit;
 
@@ -41,8 +43,9 @@ public class User {
     @GeneratedValue(strategy= GenerationType.AUTO, generator="native")
     @GenericGenerator(name = "native",strategy = "native")
     private int id;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST, orphanRemoval = false, fetch = FetchType.EAGER)
-    private Set<Poem> poems = new HashSet<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<Poem> poems = new ArrayList<>();
 
     /**
      * Zero-arg constructor that instantiates a new User.
@@ -189,6 +192,21 @@ public class User {
         this.dateOfBirth = dateOfBirth;
     }
 
+    /**
+     * Gets the list of poems
+     * @return
+     */
+    public List<Poem> getPoems() {
+        return poems;
+    }
+
+    /**
+     * Sets the list of poems
+     * @param poems the poems
+     */
+    public void setPoems(List<Poem> poems) {
+        this.poems = poems;
+    }
     /**
      * Gets age.
      *
