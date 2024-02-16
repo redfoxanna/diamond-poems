@@ -123,13 +123,21 @@ Tasks completed:
 I ran into an issue while refactoring the User class. 
 It took me a couple of hours to get all unit tests passing again. 
 I had mismatched instance variable @Column values for names that was 
-making the tests failed.
+making the tests fail. Lesson learned!
 
-**Time spent 2/15/24- **
+**Time spent 2/15/24- 3 hours**
 
 Tasks completed:
 * Added the poem table to the database
 * Finished up the Poem class and added Hibernate annotations 
 * Started PoemDao
+* Tested out OCR in Textract (see images)
+* 
+**Time spent 2/16/24- 3 hours**
+
+Tasks completed:
+* Created PoemDaoTest and wrote unit tests
+* Added unit test to User when delete
+* Finished week 5 videos 
 
 
