@@ -31,6 +31,9 @@ class PoemDaoTest {
 
     @Test
     void update() {
+        Poem poem = poemDao.getById(1);
+        poem.setPoemImage("");
+
     }
 
     @Test
@@ -40,13 +43,15 @@ class PoemDaoTest {
         User user = userDao.getById(1);
 
         // create a poem with the user on it
-        Poem poem = new Poem("This is a test poem", "poem2.jpg", Timestamp.valueOf(LocalDateTime.now()), "example, tag");
+        Poem poem = new Poem("This is a test poem", "poem2.jpg", user, "example, tag");
         // insert the poem
         int insertedPoemId = poemDao.insert(poem);
         // retrieve the poem
         Poem retrievedPoem = poemDao.getById(insertedPoemId);
         // verify
         assertNotNull(retrievedPoem);
+        assertEquals(poem.getPoemImage(),retrievedPoem.getPoemImage());
+        assertEquals("Anna", poem.getUser().getFirstName());
     }
 
     @Test
