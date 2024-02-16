@@ -1,5 +1,6 @@
 package com.redfoxanna.persistence;
 
+import com.redfoxanna.entity.Poem;
 import com.redfoxanna.entity.User;
 import com.redfoxanna.util.Database;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,7 +26,7 @@ class UserDaoTest {
         assertNotNull(retrievedUser);
         assertEquals("Anna", retrievedUser.getFirstName());
     }
-    @Test
+    @Test // TODO decide what to do about persisting a poem if user deleted
     void testUpdateSuccess() {
         User userToUpdate = userDao.getById(1);
         userToUpdate.setLastName("Banana");
@@ -50,6 +51,30 @@ class UserDaoTest {
     void testDeleteSuccess() {
         userDao.delete(userDao.getById(1));
         assertNull(userDao.getById(1));
+    }
+
+    @Test
+    void testDeleteWithPoemSuccess() {
+
+        // get the user you want to delete with two poems associated
+        User userToBeDeleted = userDao.getById(1);
+        List<Poem> poems = userToBeDeleted.getPoems();
+
+        // get the associated poem numbers
+        int poemNumber1 = poems.get(0).getId();
+        int poemNumber2 = poems.get(1).getId();
+
+        // delete the user
+        userDao.delete(userDao.getById(1));
+        assertNull(userDao.getById(1));
+
+        // verify the user was deleted
+        assertNull(userDao.getById(1));
+
+        // verify the poems were also deleted
+        PoemDao poemDao = new PoemDao();
+        assertNull(poemDao.getById(poemNumber1));
+        assertNull(poemDao.getById(poemNumber2));
     }
 
     @Test
