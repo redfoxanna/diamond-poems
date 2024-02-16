@@ -115,7 +115,21 @@ Tasks completed: 2 hours
 * Started the Poem class
 * Designed the Poem table 
 
-**Time spent 2/14/24- **
+**Time spent 2/14/24- 2 hours**
 
 Tasks completed:
-* Refactored code to add user's email and birthdate
+* Refactored code to add user's email and birthdate.
+
+I ran into an issue while refactoring the User class. 
+It took me a couple of hours to get all unit tests passing again. 
+I had mismatched instance variable @Column values for names that was 
+making the tests failed.
+
+**Time spent 2/15/24- **
+
+Tasks completed:
+* Added the poem table to the database
+* Finished up the Poem class and added Hibernate annotations 
+* Started PoemDao
+
+
