@@ -36,6 +36,16 @@ public class Poem {
     }
 
     /**
+     * Constructor for a poem with parameters
+     */
+    public Poem(String content, String poemImage, Timestamp createdAt, String genreTags) {
+        this.content = content;
+        this.poemImage = poemImage;
+        this.createdAt = createdAt;
+        this.genreTags = genreTags;
+    }
+
+    /**
      * Gets id.
      *
      * @return the id
