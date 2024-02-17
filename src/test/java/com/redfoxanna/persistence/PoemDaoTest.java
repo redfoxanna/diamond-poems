@@ -67,14 +67,18 @@ class PoemDaoTest {
     @Test
     void getAll() {
         List<Poem> poems = poemDao.getAll();
-        assertEquals(1, poems.size());
+        assertEquals(2, poems.size());
     }
 
     @Test
     void getByPropertyEqual() {
+        List<Poem> poems = poemDao.getByPropertyEqual("genreTags","cute, funny");
+        assertEquals(1, poems.size());
     }
 
     @Test
     void getByPropertyLike() {
+        List<Poem> poems = poemDao.getByPropertyLike("genreTags", "happy");
+        assertEquals(1, poems.size());
     }
 }
