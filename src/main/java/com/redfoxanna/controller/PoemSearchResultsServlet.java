@@ -47,7 +47,7 @@ public class PoemSearchResultsServlet extends HttpServlet {
         //session.setAttribute("searchResults", search);
 
         // Forward the request and response to the Employee Search Results JSP page
-        String url = "/poem-search-results.jsp";
+        String url = "/poem-search-user-search-results.jsp";
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
