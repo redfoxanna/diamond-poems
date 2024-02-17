@@ -13,7 +13,7 @@ import java.io.IOException;
  * @author redfoxanna
  */
 @WebServlet(name = "addPoem",
-        urlPatterns = {"/add-poem"}
+        urlPatterns = {"/poem-add"}
 )
 public class PoemAddAction extends HttpServlet {
 
