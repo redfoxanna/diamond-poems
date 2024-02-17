@@ -131,13 +131,19 @@ Tasks completed:
 * Added the poem table to the database
 * Finished up the Poem class and added Hibernate annotations 
 * Started PoemDao
-* Tested out OCR in Textract (see images)
-* 
+* Tested out OCR in Textract (see images)-- Right now I think Textract will work better if used with the "line" analysis instead of word by word.
+
 **Time spent 2/16/24- 3 hours**
 
 Tasks completed:
 * Created PoemDaoTest and wrote unit tests
-* Added unit test to User when delete
+* Added unit test to User when deleted-- I need to decide if I want the poems persisted or not when a user is deleted.
+Right now my application is coded to cascade on delete. Might need to refactor this week.
 * Finished week 5 videos 
+
+**Time spent 2/17/24- hours**
+
+Tasks completed:
+* Started adding servlet classes to handle searching and adding poems
 
 
