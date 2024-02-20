@@ -28,13 +28,14 @@ class UserDaoTest {
     }
     @Test // TODO decide what to do about persisting a poem if user deleted
     void testUpdateSuccess() {
+        String newLastName = "Banana";
         User userToUpdate = userDao.getById(1);
-        userToUpdate.setLastName("Banana");
+        userToUpdate.setLastName(newLastName);
         userDao.update(userToUpdate);
 
         // Get the actual user and check values match after update
-        User actualUser = userDao.getById(1);
-        assertEquals("Banana", actualUser.getLastName());
+        User retrievedUser = userDao.getById(1);
+        assertEquals(userToUpdate, retrievedUser);
 
     }
 
