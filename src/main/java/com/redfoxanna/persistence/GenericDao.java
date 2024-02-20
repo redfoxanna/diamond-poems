@@ -40,6 +40,18 @@ public class GenericDao<T> {
     }
 
     /**
+     * update entity
+     * @param entity the entity to be updated
+     */
+    public void update(T entity) {
+        Session session = getSession();
+        Transaction transaction = session.beginTransaction();
+        session.merge(entity);
+        transaction.commit();
+        session.close();
+    }
+
+    /**
      * Delete an entity
      * @param entity the entity to be deleted
      */
