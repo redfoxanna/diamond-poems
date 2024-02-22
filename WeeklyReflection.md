@@ -141,9 +141,32 @@ Tasks completed:
 Right now my application is coded to cascade on delete. Might need to refactor this week.
 * Finished week 5 videos 
 
-**Time spent 2/17/24- hours**
+**Time spent 2/17/24- 1.5 hours**
 
 Tasks completed:
 * Started adding servlet classes to handle searching and adding poems
+* Started GenericDao class
 
+---
 
+### Week 6
+
+**Time spent 2/20/24- 1.5 hour**
+
+Tasks completed:
+* Watched week 6 intro video
+* Watched first AWS video and followed along with the setup. 
+I was not able to get Diamond Poems working with Elastic Beanstalk
+
+**Time spent 2/21/24- 1 hour**
+
+Tasks completed:
+* Attempted to get Diamond Poems up with Elastic Beanstalk. 
+I believe I need to make a key pair and an instance profile to make this work and will try again tomorrow.
+
+**Time spent 2/22/24- 1.5 hours** 
+
+Tasks completed:
+* Created a key pair and an instance profile for Diamond Poems
+* Finally able to get Diamond Poems to work with Elastic Beanstalk http://diamond-poems-env.eba-nvxhqmzs.us-east-2.elasticbeanstalk.com/
+* Worked along with video for database set up and redeploy 
