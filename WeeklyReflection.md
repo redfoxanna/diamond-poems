@@ -169,4 +169,11 @@ I believe I need to make a key pair and an instance profile to make this work an
 Tasks completed:
 * Created a key pair and an instance profile for Diamond Poems
 * Finally able to get Diamond Poems to work with Elastic Beanstalk http://diamond-poems-env.eba-nvxhqmzs.us-east-2.elasticbeanstalk.com/
-* Worked along with video for database set up and redeploy 
+* Worked along with video for database set up and redeploy
+
+**Time spent 2/23/24- 3 hours**
+
+Tasks completed:
+* Met with Jennifer for a code review in Teams (45 minutes). We shared our individual projects to-date and plan on taking an issue out by Sunday with comments on code.
+* Did research on Bootstrap CSS for my jsps
+* Worked on index.jsp and search-results.jsp
