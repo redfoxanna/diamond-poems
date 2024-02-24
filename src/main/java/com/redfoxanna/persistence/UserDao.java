@@ -82,6 +82,7 @@ public class UserDao {
 
         HibernateCriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<User> query = builder.createQuery(User.class);
+        logger.debug("The getAll() query:");
         Root<User> root = query.from(User.class);
         List<User> users = session.createSelectionQuery( query ).getResultList();
 

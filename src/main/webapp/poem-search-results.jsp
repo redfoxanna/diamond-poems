@@ -4,7 +4,7 @@
 
 <script type="text/javascript" class="init">
     $(document).ready( function () {
-        $('#userTable').DataTable();
+        $('#poemTable').DataTable();
     } );
 </script>
 <html>
@@ -13,18 +13,20 @@
 
 <div class="container-fluid">
     <h2>Search Results: </h2>
-    <table id="userTable" class="display">
+    <table id="poemTable" class="display">
         <thead>
-        <th>Name</th>
-        <th>User Name</th>
-        <th>Poems</th>
+        <th>User</th>
+        <th>Created at</th>
+        <th>Poem</th>
+        <th>Tags</th>
         </thead>
         <tbody>
-        <c:forEach var="user" items="${users}">
+        <c:forEach var="poem" items="${poems}">
             <tr>
-                <td>${user.firstName} ${user.lastName}</td>
-                <td>${user.userName}</td>
-                <td>Poems should go here</td>
+                <td>${poem.user.userName}</td>
+                <td>${poem.createdAt}</td>
+                <td>${poem.content}</td>
+                <td>${poem.genreTags}</td>
             </tr>
         </c:forEach>
         </tbody>

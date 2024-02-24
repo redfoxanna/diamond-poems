@@ -1,5 +1,6 @@
 package com.redfoxanna.controller;
 
+import com.redfoxanna.persistence.PoemDao;
 import com.redfoxanna.persistence.UserDao;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,19 +17,20 @@ import java.io.IOException;
  */
 
 @WebServlet(
-        urlPatterns = {"/searchUser"}
+        urlPatterns = {"/searchPoem"}
 )
 
-public class SearchUser extends HttpServlet {
+public class SearchPoem extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        UserDao userDao = new UserDao();
+        // TODO update for a generic dao
+        PoemDao poemDao = new PoemDao();
 
         if (req.getParameter("submit").equals("search")) {
-            req.setAttribute("users", userDao.getByPropertyEqual("lastName", req.getParameter("searchTerm")));
+            req.setAttribute("poems", poemDao.getByPropertyLike("content", req.getParameter("searchTerm")));
         } else {
-            req.setAttribute("users", userDao.getAll());
+            req.setAttribute("poems", poemDao.getAll());
         }
         RequestDispatcher dispatcher = req.getRequestDispatcher("/poem-search-results.jsp");
         dispatcher.forward(req, resp);

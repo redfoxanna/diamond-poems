@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 /**
  * The Poem class
@@ -21,12 +20,12 @@ public class Poem {
     @Column(name="poem_content")
     private String content;
     @Column(name="poem_image")
-    private String poemImage; // TODO: How handle images?
+    private String poemImage; // TODO: how handle images?
     @ManyToOne
     private User user = new User();
-    @Column(name="created_at")
+    @Column(name="created_at") // TODO how work with submit form
     private Timestamp createdAt;
-    @Column(name="poem_tags")
+    @Column(name="poem_tags") // TODO should this be an ArrayList instead?
     private String genreTags;
 
     /**
@@ -38,10 +37,10 @@ public class Poem {
     /**
      * Constructor for a poem with parameters
      */
-    public Poem(String content, String poemImage, Timestamp createdAt, String genreTags) {
+    public Poem(String content, String poemImage, User user, String genreTags) {
         this.content = content;
         this.poemImage = poemImage;
-        this.createdAt = createdAt;
+        this.user = user;
         this.genreTags = genreTags;
     }
 
