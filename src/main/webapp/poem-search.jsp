@@ -3,7 +3,7 @@
 <%@include file="header.jsp"%>
 <body>
 <section id="search-archives" class="d-flex align-items-center">
-    <form action="searchUser" class="form-inline">
+    <form action="searchPoem" class="form-inline">
         <h2>Search Archives</h2>
         <div class="form-group">
             <label for="searchTerm">Search Archives</label>
@@ -13,6 +13,5 @@
         <button type="submit" name="submit" value="viewAll">View all</button>
     </form>
 </section>
-
 </body>
 </html>
