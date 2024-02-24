@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<c:set var="title" value="Search Results" />
 <%@include file="head.jsp"%>
 
 <script type="text/javascript" class="init">
@@ -8,15 +8,15 @@
     } );
 </script>
 <html>
+<%@include file="header.jsp"%>
 <body>
 
 <div class="container-fluid">
     <h2>Search Results: </h2>
-    <table id="userTable" class="display" cellspacing="0" width="100%">
+    <table id="userTable" class="display">
         <thead>
         <th>Name</th>
         <th>User Name</th>
-        <th>Age</th>
         <th>Poems</th>
         </thead>
         <tbody>
@@ -24,16 +24,8 @@
             <tr>
                 <td>${user.firstName} ${user.lastName}</td>
                 <td>${user.userName}</td>
-                <td>${user.age}</td>
-                <td>
-                    <ul>
-                        <c:forEach var="poem" items="${user.poems}">
-                            <li>${poem.content}</li>
-                        </c:forEach>
-                    </ul>
-                </td>
+                <td>Poems should go here</td>
             </tr>
-
         </c:forEach>
         </tbody>
     </table>
