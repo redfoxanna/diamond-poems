@@ -177,6 +177,8 @@ Tasks completed:
 * Met with Jennifer for a code review in Teams. We shared our individual projects to-date and plan on taking an issue out by Sunday with comments on code.
 * Did research on Bootstrap CSS for my jsps
 * Worked on index.jsp and search-results.jsp design and display
+  [Index Display Progress](images/progressIndex1.png)
+  [Search Display Progress](images/progressSearch1.png)
 
 **Time spent 2/24/24- 1.5 hours**
 
@@ -185,3 +187,15 @@ Tasks completed:
 * Did some more fussing with the CSS
 
 ---
+
+### Week 7
+
+**Time spent 2/26/24- 3.5 hours**
+
+Tasks completed:
+* Attended the meetup on UW-Madison campus for Women in Tech
+* Started PowerPoint presentation on what I learned at the event
+
+**2/27/24**
+
+I spent the day preparing for and attending the on-campus career fair at Madison College
