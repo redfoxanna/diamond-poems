@@ -14,4 +14,5 @@
     </form>
 </section>
 </body>
+<%@include file="footer.jsp"%>
 </html>
