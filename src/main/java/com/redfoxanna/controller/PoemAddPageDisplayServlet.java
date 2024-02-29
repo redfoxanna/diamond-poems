@@ -19,7 +19,7 @@ public class PoemAddPageDisplayServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
-        String url = "/poem-add-jsp";
+        String url = "/poem-add-display.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }

@@ -27,7 +27,7 @@ public class PoemAddAction extends HttpServlet {
         // TODO add the success add message to the session
 
         // TODO send redirect? to the add-poem jsp
-        String url = "/poem-add.jsp";
-        response.sendRedirect(request.getContextPath() + url);
+        //String url = "/poem-add-display.jsp";
+        //response.sendRedirect(request.getContextPath() + url);
     }
 }
