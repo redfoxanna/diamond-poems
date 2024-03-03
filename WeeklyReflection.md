@@ -197,5 +197,22 @@ Tasks completed:
 * Started PowerPoint presentation on what I learned at the event
 
 **2/27/24**
-
 I spent the day preparing for and attending the on-campus career fair at Madison College
+
+**2/28/24**
+I spent the day following up with employers from the career fair
+
+**Time spent 3/1/24- 1 hour**
+
+Tasks completed:
+* Started videos and readings for week 7
+
+**3/2/24- 3 hours**
+
+Tasks completed:
+* Completed readings and videos for week 7 
+* Completed the exercise for week 7 
+* Installed Chocolatey to my Windows machine so get OpenSSL, still working on trying to get a certificate
+
+Tasks completed:
+* 
