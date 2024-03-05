@@ -212,7 +212,11 @@ Tasks completed:
 Tasks completed:
 * Completed readings and videos for week 7 
 * Completed the exercise for week 7 
-* Installed Chocolatey to my Windows machine so able to use OpenSSL to generate a certificate
+* Installed Chocolatey on my Windows machine so able to use OpenSSL to generate a certificate
+
+---
+
+### Week 8
 
 **Time spent 3/4/24- 2 hours**
 
