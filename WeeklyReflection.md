@@ -200,19 +200,29 @@ Tasks completed:
 I spent the day preparing for and attending the on-campus career fair at Madison College
 
 **2/28/24**
-I spent the day following up with employers from the career fair
+I spent the day researching and following up with employers from the career fair
 
 **Time spent 3/1/24- 1 hour**
 
 Tasks completed:
 * Started videos and readings for week 7
 
-**3/2/24- 3 hours**
+**Time spent 3/2/24- 3 hours**
 
 Tasks completed:
 * Completed readings and videos for week 7 
 * Completed the exercise for week 7 
-* Installed Chocolatey to my Windows machine so get OpenSSL, still working on trying to get a certificate
+* Installed Chocolatey to my Windows machine so able to use OpenSSL to generate a certificate
+
+**Time spent 3/4/24- 2 hours**
 
 Tasks completed:
-* 
+* Worked on professional development PowerPoint presentation
+* Completed feedback forms for peers professional development projects
+
+**Time spent 3/5/24-** 
+
+Tasks completed:
+* Diamond Poems-- Set up an AWS Cognito User Pool and used Cognito 
+in a locally deployed web application to provide sign up and sign in capability.
+* Started videos for week 8  
