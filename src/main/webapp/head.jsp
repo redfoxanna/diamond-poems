@@ -28,6 +28,9 @@
     <!-- Template Main CSS File -->
     <link href="CSS/style.css" rel="stylesheet">
 
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+
 </head>
 
 
