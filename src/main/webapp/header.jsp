@@ -13,7 +13,7 @@
                 <li><a href="${pageContext.request.contextPath}//poem-add-display">Upload Poem</a></li>
                 <li><a href="${pageContext.request.contextPath}/poem-search-results">Search Archives</a></li>
                 <li><a href="${pageContext.request.contextPath}/questions">FAQ</a></li>
-                <li><a class="getstarted scrollto" href="#about">Login</a></li>
+                <li><a href="${pageContext.request.contextPath}/logIn">Login</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
