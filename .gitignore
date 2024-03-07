@@ -6,6 +6,7 @@
 dba*
 logs*
 resources*
+.ebextensions*
 
 # User-specific stuff:
 .idea/workspace.xml
