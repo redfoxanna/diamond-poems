@@ -1,6 +1,7 @@
-<%@include file="head.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:import url="head.jsp" />
 <html>
-<%@include file="header.jsp"%>
+<c:import url="header.jsp" />
 <body>
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex align-items-center">
@@ -22,5 +23,5 @@
 
 </section><!-- End Hero -->
 </body>
-<%@include file="footer.jsp"%>
+<c:import url="footer.jsp">
 </html>

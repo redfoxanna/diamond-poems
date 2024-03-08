@@ -1,9 +1,10 @@
-<%@include file="head.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:import url="head.jsp">
 <html>
-<%@include file="header.jsp"%>
+<c:import url="header.jsp">
 <body>
 <h1>Add to the archives:</h1>
 
 </body>
-<%@include file="footer.jsp"%>
+<c:import url="footer.jsp">
 </html>
