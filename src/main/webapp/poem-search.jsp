@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:import url="head.jsp">
+<c:import url="head.jsp" />
 <html>
-<c:import url="header.jsp">
+<c:import url="header.jsp" />
 <body>
 <section id="search-archives" class="d-flex align-items-center">
     <form action="searchPoem" class="form-inline">
@@ -15,5 +15,5 @@
     </form>
 </section>
 </body>
-<c:import url="footer.jsp">
+<c:import url="footer.jsp" />
 </html>

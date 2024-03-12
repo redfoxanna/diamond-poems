@@ -23,5 +23,5 @@
 
 </section><!-- End Hero -->
 </body>
-<c:import url="footer.jsp">
+<c:import url="footer.jsp" />
 </html>

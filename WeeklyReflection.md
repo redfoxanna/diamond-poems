@@ -224,9 +224,40 @@ Tasks completed:
 * Worked on professional development PowerPoint presentation
 * Completed feedback forms for peers professional development projects
 
-**Time spent 3/5/24-** 
+**Time spent 3/5/24- 1.5 hour** 
 
 Tasks completed:
-* Diamond Poems-- Set up an AWS Cognito User Pool and used Cognito 
-in a locally deployed web application to provide sign up and sign in capability.
-* Started videos for week 8  
+* Started videos for week 8
+* Looked at AWS documentation for Textract trying to figure out how to use API.
+  [Textract documentation](https://docs.aws.amazon.com/pdfs/textract/latest/dg/textract-dg.pdf)
+
+**Time spent 3/6/24- 2 hours**
+
+Tasks completed:
+* Started adding classes to Diamond Poems to use login/auth with AWS Cognito
+* Finished week 8 videos and activities
+
+**Time spent 3/7/24- 2 hours**
+
+Tasks completed:
+* Added dependencies for Cognito to my pom file because they were unresolved 
+* Created a User Pool and App Client for Diamond Poems but so far have not been able to obtain login
+* Started exercise for week 8, I will be using the PetStore API since I haven't quite figured out how to use Textract
+
+**Time spent 3/9/24-**
+ 
+Tasks completed:
+* Finished up week 8 exercise 
+
+*Time spent 3/10/24-**
+
+Tasks completed:
+* Filled out learning tracker
+
+
+### Spring Break
+
+**Time spent 3/12/24-**
+
+Tasks completed:
+* Started poem-add jsp

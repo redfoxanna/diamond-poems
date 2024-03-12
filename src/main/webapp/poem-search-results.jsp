@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="title" value="Search Results" />
-<c:import url="head.jsp">
+<c:import url="head.jsp" />
 
 <script type="text/javascript" class="init">
     $(document).ready( function () {
@@ -8,7 +8,7 @@
     } );
 </script>
 <html>
-<c:import url="header.jsp">
+<c:import url="header.jsp" />
 <body>
 
 <div class="container-fluid">
@@ -32,6 +32,6 @@
         </tbody>
     </table>
 </div>
-
-</body>
+    </body>
+<c:import url="footer.jsp" />
 </html>
