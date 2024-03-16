@@ -2,12 +2,14 @@ package com.redfoxanna.controller;
 
 import com.redfoxanna.util.PropertiesLoader;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
+import java.util.Properties;
 
 /**
- * Serlver to load properties on start-up
+ * Servlet to load properties on start-up
  *
  * @author redfoxanna
  */
@@ -18,7 +20,9 @@ import javax.servlet.http.HttpServlet;
 public class ApplicationStartup extends HttpServlet implements PropertiesLoader {
 
     public void init() throws ServletException {
-
+    Properties properties = loadProperties("/cognito.properties");
+    ServletContext context = getServletContext();
+    context.setAttribute("cognitoProperties", properties);
     }
 
 }
