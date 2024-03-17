@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Serlvet that handles adding a new poem to the database
+ * Servlet that handles adding a new poem to the database
  *
  * @author redfoxanna
  */

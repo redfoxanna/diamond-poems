@@ -8,37 +8,37 @@ and ranking system.
 
 
 ### Week 1-3:    
-**Task 1:** Set up project repository and initial structure
+**Task 1:** Set up project repository and initial structure-- DONE
 
-**Task 2:** Define database schema and architecture
+**Task 2:** Define database schema and architecture-- DONE
 
-**Task 3:** Design user interface wireframes for uploading images and signing up/logging in
+**Task 3:** Design user interface wireframes for uploading images and signing up/logging in-- DONE
 
-**Task 4:** Define MVP scope and prioritize user stories
-
----
-
-### Week 3-6: User Authentication and Image Upload
-
-**Task 1:** Research and implement a user authentication system (sign up, sign in, password reset)
-
-**Task 2:** Develop user-friendly interface for uploading images of handwritten Diamond Poems
-
-**Task 3:** Research and implement OCR (Optical Character Recognition) for extracting text from uploaded images
-
-**Task 4:** Test image upload functionality
+**Task 4:** Define MVP scope and prioritize user stories-- DONE
 
 ---
 
-### Week 6-7: Search and View Poems
+### Week 4-6: Search and View Poems
 
-**Task 1:** Implement search functionality to search for archived poems by typing in a search term
+**Task 1:** Implement search functionality to search for archived poems by typing in a search term-- DONE
 
-**Task 2:** Develop interface for viewing all poems in the archives
+**Task 2:** Develop interface for viewing all poems in the archives-- DONE
 
-**Task 3:** Implement viewing of archived diamond poems
+**Task 3:** Implement viewing of archived diamond poems-- DONE
 
 **Task 4:** Test search and view poems with JUnit
+
+---
+
+### Week 6-8: User Authentication and Image Upload
+
+**Task 1:** Research and implement a user authentication system (sign up, sign in, password reset)-- IN PROGRESS
+
+**Task 2:** Develop user-friendly interface for uploading images of handwritten Diamond Poems-- DONE
+
+**Task 3:** Research and implement OCR (Optical Character Recognition) for extracting text from uploaded images-- IN PROGRESS
+
+**Task 4:** Test image upload functionality-- IN PROGRESS
 
 ---
 

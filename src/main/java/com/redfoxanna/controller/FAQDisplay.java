@@ -13,7 +13,7 @@ import java.io.IOException;
         urlPatterns = {"/questions"}
 )
 
-public class FaqDisplay extends HttpServlet {
+public class FAQDisplay extends HttpServlet {
 
     /**
      * doGet that forwards the request/response to the

@@ -1,6 +1,5 @@
 package com.redfoxanna.controller;
 
-
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -8,7 +7,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.redfoxanna.auth.*;
 import com.redfoxanna.util.PropertiesLoader;
-import org.apache.commons.io.*;
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -38,7 +37,6 @@ import java.util.Base64;
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.stream.Collectors;
-
 
 @WebServlet(
         urlPatterns = {"/auth"}
@@ -105,8 +103,8 @@ public class Auth extends HttpServlet implements PropertiesLoader {
      * Sends the request for a token to Cognito and maps the response
      * @param authRequest the request to the oauth2/token url in cognito
      * @return response from the oauth2/token endpoint which should include id token, access token and refresh token
-     * @throws IOException
-     * @throws InterruptedException
+     * @throws IOException if an io exception
+     * @throws InterruptedException if interrupted
      */
     private TokenResponse getToken(HttpRequest authRequest) throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
@@ -129,15 +127,15 @@ public class Auth extends HttpServlet implements PropertiesLoader {
     /**
      * Get values out of the header to verify the token is legit. If it is legit, get the claims from it, such
      * as username.
-     * @param tokenResponse
-     * @return
-     * @throws IOException
+     * @param tokenResponse the response
+     * @return the user's name
+     * @throws IOException if an error
      */
     private String validate(TokenResponse tokenResponse) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         CognitoTokenHeader tokenHeader = mapper.readValue(CognitoJWTParser.getHeader(tokenResponse.getIdToken()).toString(), CognitoTokenHeader.class);
 
-        // Header should have kid and alg- https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-the-id-token.html
+         //Header should have kid and alg- https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-the-id-token.html
         String keyId = tokenHeader.getKid();
         String alg = tokenHeader.getAlg();
 
@@ -249,8 +247,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
             REDIRECT_URL = properties.getProperty("redirectURL");
             REGION = properties.getProperty("region");
             POOL_ID = properties.getProperty("poolId");
-        } catch (IOException ioException) {
-            logger.error("Cannot load properties..." + ioException.getMessage(), ioException);
         } catch (Exception e) {
             logger.error("Error loading properties" + e.getMessage(), e);
         }

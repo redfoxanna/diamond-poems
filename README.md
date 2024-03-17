@@ -67,5 +67,5 @@ Diamond Poems (the writing exercise) is inspired by:
 * [Error Handing OCR](DesignDocuments/error-handling.pdf)
 * [Tasks](DesignDocuments/project-plan.md)
 
-### Documentation of progress, reflections, and time spent on this class
+### Documentation of progress, reflections, and time spent on this project
 * [Weekly Refelection](WeeklyReflection.md)

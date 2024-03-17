@@ -2,7 +2,7 @@
 # General
 --------------------------------------------------------------*/
 body {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Raleway", sans-serif;
     color: #212529;
 }
 
@@ -16,7 +16,7 @@ a:hover {
     text-decoration: none;
 }
 
-form button {
+form button, .btn-primary {
     background: #eb5d1e;
     color: #fff;
     border-radius: 3px;
@@ -161,7 +161,7 @@ h1#nav-logo {
     font-size: 24px;
 }
 
-#hero .btn-get-started {
+#hero .btn-get-started, form button {
     font-family: "Raleway", sans-serif;
     font-weight: 500;
     font-size: 16px;
