@@ -257,7 +257,24 @@ Tasks completed:
 
 ### Spring Break
 
-**Time spent 3/12/24-**
+**Time spent- 3/11-3/17/2024**
 
 Tasks completed:
-* Started poem-add jsp
+* Started poem-add jsp with genres, moods in a form
+* Got Cognito working(ish) in Diamond Poems. There is a funky error happening with my token 
+"not being available until HH:MM:SS" but the time given is the time I request/use the token. 
+When I went into my computer's settings and updated the time to be universal, 
+I stopped getting this error. I will need to investigate this more since that is not a permanent fix.
+
+### Week 9
+
+**Time spent 3/18/24- 45 minutes**
+
+Tasks completed:
+* Set meeting date/time with team for project work
+* Watched week 9 videos
+
+**Time spent 3/19/24- **
+
+Tasks completed: 
+* Created and sent out Teams meeting for tomorrow
