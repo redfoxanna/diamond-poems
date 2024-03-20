@@ -22,6 +22,9 @@ Examples of a diamond poem:
 Diamond Poems (the writing exercise) is inspired by:
 [Diamonte Poems Wikipedia](https://en.wikipedia.org/wiki/Diamante_poem#:~:text=A%20diamante%20poem%2C%20or%20diamond,%3A%20The%20Diamante%20(1969))
 
+What is OCR?
+[OCR Wikipedia](https://en.wikipedia.org/wiki/Optical_character_recognition)
+
 ---
 ### Project Technologies/Techniques
 
@@ -49,7 +52,6 @@ Diamond Poems (the writing exercise) is inspired by:
     * OCR API
     * Hibernate Validation
     * Hibernate Search
-* Project Lombok
 * Unit Testing
     * JUnit 5 tests to achieve 80%+ code coverage
 * IDE: IntelliJ IDEA
