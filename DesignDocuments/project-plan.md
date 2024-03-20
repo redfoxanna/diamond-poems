@@ -26,31 +26,31 @@ and ranking system.
 
 **Task 3:** Implement viewing of archived diamond poems-- DONE
 
-**Task 4:** Test search and view poems with JUnit
+**Task 4:** Test search and view poems with JUnit-- IN PROGRESS updating with generic dao 
 
 ---
 
 ### Week 6-8: User Authentication and Image Upload
 
-**Task 1:** Research and implement a user authentication system (sign up, sign in, password reset)-- IN PROGRESS
+**Task 1:** Research and implement a user authentication system (sign up, sign in, password reset)-- IN PROGRESS something is funky with time settings for the token
 
-**Task 2:** Develop user-friendly interface for uploading images of handwritten Diamond Poems-- DONE
+**Task 2:** Develop user-friendly interface for uploading images of handwritten Diamond Poems-- DONE functionally, still needs styling and for form to submit to textract
 
 **Task 3:** Research and implement OCR (Optical Character Recognition) for extracting text from uploaded images-- IN PROGRESS
 
-**Task 4:** Test image upload functionality-- IN PROGRESS
+**Task 4:** Test image upload functionality-- IN PROGRESS, tested in AWS but not within Diamond Poems
 
 ---
 
 ### Week 8-9: Edit and Contributor View
 
-**Task 1:** Develop functionality for editing/making corrections to poems
+**Task 1:** Develop functionality for editing/making corrections to poems-- IN PROGRESS
 
-**Task 2:** Implement feature to view all contributors to a poem
+**Task 2:** Implement feature to view all contributors to a poem-- TODO: Can I just use the data table?
 
-**Task 3:** Test edit and contributor view functionality
+**Task 3:** Test edit and contributor view functionality-- NOT YET STARTED
 
-**Task 4:** Refactor and optimize code as needed
+**Task 4:** Refactor and optimize code as needed-- IN PROGRESS
 
 ---
 
