@@ -12,7 +12,7 @@
                 <h1>Diamond Poem Archives</h1>
                 <h2>Memorializing Diamond Poems</h2>
                 <div>
-                    <a href="${pageContext.request.contextPath}/poem-search-results" class="btn-get-started scrollto">Search Archives</a>
+                    <a href="${pageContext.request.contextPath}/poem-search-results" class="btn-get-started">Search Archives</a>
                 </div>
             </div>
             <div class="col-lg-6">

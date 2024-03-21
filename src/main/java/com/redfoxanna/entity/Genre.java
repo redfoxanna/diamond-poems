@@ -1,20 +1,39 @@
 package com.redfoxanna.entity;
 
+import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
+
 /**
  * The type Poem genre.
  *
  * @author redfoxanna
  */
-public class PoemGenre {
+@Entity(name="Genre")
+@Table(name = "genre")
+public class Genre {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native")
+    private int id;
+
+    @Column(name= "genre_name")
     private String genreName;
 
     /**
-     * Instantiates a new Poem genre.
+     * Instantiates a new genre with parameter.
      *
      * @param genreName the genre name
      */
-    public PoemGenre(String genreName) {
+    public Genre(String genreName) {
         this.genreName = genreName;
+    }
+
+    /**
+     * Instantiates a new Genre.
+     */
+    public Genre() {
+
     }
 
     /**
@@ -33,5 +52,23 @@ public class PoemGenre {
      */
     public void setGenreName(String genreName) {
         this.genreName = genreName;
+    }
+
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
+    public int getId() {
+        return id;
     }
 }
