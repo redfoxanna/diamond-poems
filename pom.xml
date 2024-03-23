@@ -26,11 +26,19 @@
     <auto0-version>3.4.1</auto0-version>
     <commons-io-version>2.11.0</commons-io-version>
     <json-version>20170516</json-version>
-    <textract-version>1.12.674</textract-version>
-    <aws-sdk-version>1.12.680</aws-sdk-version>
     <aws.java.sdk.version>2.25.11</aws.java.sdk.version>
   </properties>
-
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>software.amazon.awssdk</groupId>
+        <artifactId>bom</artifactId>
+        <version>2.21.20</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
     <dependency>
@@ -143,29 +151,16 @@
       <artifactId>json</artifactId>
       <version>${json-version}</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
     <dependency>
-      <groupId>com.amazonaws</groupId>
-      <artifactId>aws-java-sdk</artifactId>
-      <version>${aws-sdk-version}</version>
-    </dependency>
-    <!-- AWS Textract -->
-    <dependency>
-      <groupId>com.amazonaws</groupId>
-      <artifactId>aws-java-sdk-textract</artifactId>
-      <version>${textract-version}</version>
+      <groupId>software.amazon.awssdk</groupId>
+      <artifactId>textract</artifactId>
     </dependency>
     <!-- AWS S3  -->
     <dependency>
       <groupId>software.amazon.awssdk</groupId>
       <artifactId>s3</artifactId>
-      <version>${aws.java.sdk.version}</version>
-      <scope>test</scope>
     </dependency>
-
-
   </dependencies>
-
   <build>
     <finalName>diamond-poems</finalName>
     <pluginManagement>
