@@ -244,12 +244,12 @@ Tasks completed:
 * Created a User Pool and App Client for Diamond Poems but so far have not been able to obtain login
 * Started exercise for week 8, I will be using the PetStore API since I haven't quite figured out how to use Textract
 
-**Time spent 3/9/24-**
+**Time spent 3/9/24- 30 minutes**
  
 Tasks completed:
 * Finished up week 8 exercise 
 
-*Time spent 3/10/24-**
+*Time spent 3/10/24- 30 minutes**
 
 Tasks completed:
 * Filled out learning tracker
@@ -274,7 +274,22 @@ Tasks completed:
 * Set meeting date/time with team for project work
 * Watched week 9 videos
 
-**Time spent 3/19/24- **
+**Time spent 3/19/24- 1.5 hours**
 
 Tasks completed: 
 * Created and sent out Teams meeting for tomorrow
+* Worked on week 9 activity 
+* Did the week 9 readings
+
+**Time spent 3/20/24 - 1 hour**
+
+Tasks completed:
+* First team meeting where we came up with an idea for our team project
+
+**Time spent 3/24/24- 3 hours**
+
+Tasks completed:
+* Found examples in AWS documentation to work with [S3](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/java_s3_code_examples.html)
+and [Textract](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/java_textract_code_examples.html) and Java
+* Wrote code for an S3 and Textract class
+* Continued reworking my database to add a genre and a poem_genre table and map with hibernate
