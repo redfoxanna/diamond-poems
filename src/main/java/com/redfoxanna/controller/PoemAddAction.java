@@ -1,11 +1,21 @@
 package com.redfoxanna.controller;
 
+import com.redfoxanna.aws.S3;
+import com.redfoxanna.aws.Textract;
+import com.redfoxanna.entity.Poem;
+import com.redfoxanna.entity.User;
+import com.redfoxanna.persistence.PoemDao;
+import org.apache.commons.io.IOUtils;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 
 /**
  * Servlet that handles adding a new poem to the database
@@ -16,18 +26,58 @@ import java.io.IOException;
         urlPatterns = {"/poem-add"}
 )
 public class PoemAddAction extends HttpServlet {
+    S3 s3;
+    Textract textract;
+    String bucketName;
 
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        s3 = new S3();
+        textract = new Textract();
+        // TODO: get bucket-name from properties
+        bucketName = "diamond-poems";
+    }
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        // TODO get the data from the new poem form
-
-        // TODO call the add poem method
+        Part filePart = request.getPart("poemImage");
+        InputStream fileContent = filePart.getInputStream();
+        String userId = request.getRequestedSessionId();
+        int poemId = addPoem(fileContent, userId);
 
         // TODO add the success add message to the session
 
-        // TODO send redirect? to the add-poem jsp
+        // TODO: redirect to poem edit page
         //String url = "/poem-add-display.jsp";
         //response.sendRedirect(request.getContextPath() + url);
+    }
+
+    private int addPoem(InputStream fileStream, String userId) throws IOException {
+        String key = s3.makeKey(userId);
+        File saveFile = writeTmpFile(fileStream, key);
+
+        s3.putS3Object(s3.getClient(), bucketName, key, saveFile.getPath());
+        ArrayList<String> textractedValues = textract.getS3Text(textract.getClient(), bucketName, key);
+        String poemContent = String.join("/n", textractedValues);
+        // TODO: get user from request
+        User user = new User();
+        Poem poem = new Poem(poemContent, key, user);
+        PoemDao poemDao = new PoemDao();
+
+        return poemDao.insert(poem);
+    }
+    private File writeTmpFile(InputStream initialStream, String filePath) throws IOException {
+        File targetFile = new File(String.format("tmp/%s", filePath));
+        OutputStream outStream = new FileOutputStream(targetFile);
+
+        byte[] buffer = new byte[8 * 1024];
+        int bytesRead;
+        while ((bytesRead = initialStream.read(buffer)) != -1) {
+            outStream.write(buffer, 0, bytesRead);
+        }
+        IOUtils.closeQuietly(initialStream);
+        IOUtils.closeQuietly(outStream);
+
+        return targetFile;
     }
 }
