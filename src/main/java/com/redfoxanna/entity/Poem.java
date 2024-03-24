@@ -25,8 +25,7 @@ public class Poem {
     private User user = new User();
     @Column(name="created_at") // TODO how work with submit form
     private Timestamp createdAt;
-    @Column(name="poem_tags") // TODO should this be an ArrayList instead?
-    private String genreTags;
+
 
     /**
      * No arg constructor
@@ -37,11 +36,11 @@ public class Poem {
     /**
      * Constructor for a poem with parameters
      */
-    public Poem(String content, String poemImage, User user, String genreTags) {
+    public Poem(String content, String poemImage, User user) {
         this.content = content;
         this.poemImage = poemImage;
         this.user = user;
-        this.genreTags = genreTags;
+
     }
 
     /**
@@ -132,23 +131,6 @@ public class Poem {
         this.createdAt = createdAt;
     }
 
-    /**
-     * Gets the poem's genre tags
-     *
-     * @return the genre tags for the poem
-     */
-    public String getGenreTags() {
-        return genreTags;
-    }
-
-    /**
-     * Set the genre tags
-     *
-     * @param genreTags the genre tags
-     */
-    public void setGenreTags(String genreTags) {
-        this.genreTags = genreTags;
-    }
 
     /**
      * Gives all poem variables and values
@@ -162,7 +144,6 @@ public class Poem {
                 ", poemImage='" + poemImage + '\'' +
                 ", userId=" + user +
                 ", createdAt=" + createdAt +
-                ", genreTags='" + genreTags + '\'' +
                 '}';
     }
 }
