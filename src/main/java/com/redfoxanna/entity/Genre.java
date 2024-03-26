@@ -3,12 +3,14 @@ package com.redfoxanna.entity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.Set;
+
 /**
  * The type Poem genre.
  *
  * @author redfoxanna
  */
-@Entity(name="Genre")
+@Entity(name = "Genre")
 @Table(name = "genre")
 public class Genre {
 
@@ -17,8 +19,16 @@ public class Genre {
     @GenericGenerator(name = "native")
     private int id;
 
-    @Column(name= "genre_name")
+    @Column(name = "genre_name")
     private String genreName;
+
+    @ManyToMany
+    @JoinTable(
+            name = "poem_genre",
+            joinColumns = @JoinColumn(name = "genre_id"),
+            inverseJoinColumns = @JoinColumn(name = "poem_id")
+    )
+    private Set<Poem> poems;
 
     /**
      * Instantiates a new genre with parameter.

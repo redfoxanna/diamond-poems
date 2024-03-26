@@ -1,7 +1,7 @@
 package com.redfoxanna.controller;
 
 import com.redfoxanna.persistence.PoemDao;
-import com.redfoxanna.persistence.UserDao;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

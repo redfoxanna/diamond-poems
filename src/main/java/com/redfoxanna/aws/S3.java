@@ -6,13 +6,13 @@ import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
+import software.amazon.awssdk.services.s3.model.PutObjectResponse;
 import software.amazon.awssdk.services.s3.model.S3Exception;
-import software.amazon.awssdk.services.textract.TextractClient;
-import software.amazon.awssdk.services.textract.model.TextractException;
 
+import javax.ws.rs.ProcessingException;
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
+import java.time.LocalDate;
+import java.util.UUID;
 
 public class S3 {
     private final Logger log = LogManager.getLogger(this.getClass());
@@ -29,7 +29,7 @@ public class S3 {
     /**
      * Instantiates a new S3 Client.
      *
-     * @param s3c the tc
+     * @param s3c the s3c
      */
     public S3(S3Client s3c) {
         this.s3Client = s3c;
@@ -60,7 +60,7 @@ public class S3 {
     }
 
     /**
-     * Close the global textract client.
+     * Close the global s3 client.
      */
     public void closeClient() {
         try {
@@ -69,25 +69,40 @@ public class S3 {
             log.error("Failed to close s3 client.", s3e);
         }
     }
+    /**
+     * Make key string.
+     *
+     * @param userName the userName in cognito
+     * @return the string
+     */
+    public String makeKey(String userName) {
+        String randomId = String.valueOf(UUID.randomUUID());
+
+        LocalDate ld = LocalDate.now();
+
+        return String.format("%s/%s/%s/%s/%s.jpg",
+                ld.getYear(),
+                ld.getMonthValue(),
+                ld.getDayOfMonth(),
+                userName,
+                randomId);
+    }
 
     // This example uses RequestBody.fromFile to avoid loading the whole file into
     // memory.
-    public static void putS3Object(S3Client s3, String bucketName, String objectKey, String objectPath) {
+    public String putS3Object(S3Client s3, String bucketName, String objectKey, String objectPath) {
         try {
-            Map<String, String> metadata = new HashMap<>();
-            metadata.put("x-amz-meta-myVal", "test");
             PutObjectRequest putOb = PutObjectRequest.builder()
                     .bucket(bucketName)
                     .key(objectKey)
-                    .metadata(metadata)
                     .build();
 
-            s3.putObject(putOb, RequestBody.fromFile(new File(objectPath)));
-            System.out.println("Successfully placed " + objectKey + " into bucket " + bucketName);
+            PutObjectResponse putObjectResponse = s3.putObject(putOb, RequestBody.fromFile(new File(objectPath)));
+            return putObjectResponse.eTag();
 
         } catch (S3Exception e) {
-            System.err.println(e.getMessage());
-            System.exit(1);
+            log.error("Failed to upload file to s3.", e);
+            throw(new ProcessingException("Failed to write S3 Object"));
         }
     }
 }

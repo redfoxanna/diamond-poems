@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.sql.Timestamp;
+import java.util.Set;
 
 /**
  * The Poem class
@@ -19,12 +20,15 @@ public class Poem {
     private int id;
     @Column(name="poem_content")
     private String content;
+    @Column(name="user_name")
+    private String userName;
+
     @Column(name="poem_image")
-    private String poemImage; // TODO: how handle images?
-    @ManyToOne
-    private User user = new User();
-    @Column(name="created_at") // TODO how work with submit form
+    private String poemImage;
+    @Column(name="created_at")
     private Timestamp createdAt;
+    @ManyToMany(mappedBy = "poems")
+    private Set<Genre> genres;
 
 
     /**
@@ -36,10 +40,10 @@ public class Poem {
     /**
      * Constructor for a poem with parameters
      */
-    public Poem(String content, String poemImage, User user) {
+    public Poem(String content, String poemImage, String userName) {
         this.content = content;
         this.poemImage = poemImage;
-        this.user = user;
+        this.userName = userName;
 
     }
 
@@ -98,19 +102,19 @@ public class Poem {
     }
 
     /**
-     * Gets the user id of poem author
+     * Gets the user name of poem author
      * @return the user's id
      */
-    public User getUser() {
-        return user;
+    public String getUserName() {
+        return userName;
     }
 
     /**
-     * Sets the user's id
-     * @param user the user object
+     * Sets the user's username
+     * @param userName the userName referenced by cognito
      */
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(String userName) {
+        this.userName = userName;
     }
 
     /**
@@ -120,15 +124,6 @@ public class Poem {
      */
     public Timestamp getCreatedAt() {
         return createdAt;
-    }
-
-    /**
-     * Sets created at.
-     *
-     * @param createdAt the created at
-     */
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
     }
 
 
@@ -142,7 +137,7 @@ public class Poem {
                 "id=" + id +
                 ", content='" + content + '\'' +
                 ", poemImage='" + poemImage + '\'' +
-                ", userId=" + user +
+                ", userName=" + userName +
                 ", createdAt=" + createdAt +
                 '}';
     }

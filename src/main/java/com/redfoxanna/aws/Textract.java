@@ -55,24 +55,6 @@ public class Textract {
         return textractClient;
     };
 
-    /**
-     * Make key string.
-     *
-     * @param userId the user id
-     * @return the string
-     */
-    public String makeKey(String userId) {
-        String randomId = String.valueOf(UUID.randomUUID());
-
-        LocalDate ld = LocalDate.now();
-
-        return String.format("%s/%s/%s/%s/%s.jpg",
-                ld.getYear(),
-                 ld.getMonthValue(),
-                ld.getDayOfMonth(),
-                userId,
-                randomId);
-    }
 
     /**
      * Sets client.

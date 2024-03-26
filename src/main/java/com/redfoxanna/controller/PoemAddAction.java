@@ -3,11 +3,9 @@ package com.redfoxanna.controller;
 import com.redfoxanna.aws.S3;
 import com.redfoxanna.aws.Textract;
 import com.redfoxanna.entity.Poem;
-import com.redfoxanna.entity.User;
 import com.redfoxanna.persistence.PoemDao;
 import org.apache.commons.io.IOUtils;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,15 +33,15 @@ public class PoemAddAction extends HttpServlet {
         super.init();
         s3 = new S3();
         textract = new Textract();
-        // TODO: get bucket-name from properties
+        // TODO: get bucket-name from a properties file
         bucketName = "diamond-poems";
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Part filePart = request.getPart("poemImage");
         InputStream fileContent = filePart.getInputStream();
-        String userId = request.getRequestedSessionId();
-        int poemId = addPoem(fileContent, userId);
+        String userName = request.getAttribute("userName").toString();
+        int poemId = addPoem(fileContent, userName);
 
         // TODO add the success add message to the session
 
@@ -52,16 +50,15 @@ public class PoemAddAction extends HttpServlet {
         //response.sendRedirect(request.getContextPath() + url);
     }
 
-    private int addPoem(InputStream fileStream, String userId) throws IOException {
-        String key = s3.makeKey(userId);
+    private int addPoem(InputStream fileStream, String userName) throws IOException {
+        String key = s3.makeKey(userName);
         File saveFile = writeTmpFile(fileStream, key);
 
         s3.putS3Object(s3.getClient(), bucketName, key, saveFile.getPath());
         ArrayList<String> textractedValues = textract.getS3Text(textract.getClient(), bucketName, key);
         String poemContent = String.join("/n", textractedValues);
-        // TODO: get user from request
-        User user = new User();
-        Poem poem = new Poem(poemContent, key, user);
+
+        Poem poem = new Poem(poemContent, key, userName);
         PoemDao poemDao = new PoemDao();
 
         return poemDao.insert(poem);
