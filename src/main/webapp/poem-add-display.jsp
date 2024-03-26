@@ -21,7 +21,7 @@
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="genre1">
                         <label class="form-check-label" for="genre1">
-                            Love and relationships
+                            Love and Relationships
                         </label>
                     </div>
                     <!-- Add more checkboxes as needed -->
@@ -29,118 +29,151 @@
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="genre2">
                         <label class="form-check-label" for="genre2">
-                            Nature and the environment
+                            Nature and the Environment
                         </label>
                     </div>
                     <!-- Repeat this block to create more checkboxes -->
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="genre3">
                         <label class="form-check-label" for="genre3">
-                            Identity and self-discovery
+                            Identity and Self-Discovery
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="genre4">
                         <label class="form-check-label" for="genre4">
-                            Loss and grief
+                            Loss and Grief
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="genre5">
                         <label class="form-check-label" for="genre5">
-                            Hope and resilience
+                            Hope and Resilience
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="genre6">
                         <label class="form-check-label" for="genre6">
-                            Social justice and equality
+                            Social Justice and Equality
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="genre7">
                         <label class="form-check-label" for="genre7">
-                            Dreams and aspirations
+                            Dreams and Aspirations
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="genre8">
                         <label class="form-check-label" for="genre8">
-                            Time and memories
+                            Time and Memories
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="genre9">
                         <label class="form-check-label" for="genre9">
-                            Spirituality and transcendence
+                            Spirituality and Transcendence
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="genre10">
                         <label class="form-check-label" for="genre10">
-                            Transformation and growth
+                            Transformation and Growth
                         </label>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label>Moods</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="mood1">
-                        <label class="form-check-label" for="mood1">
+                        <input class="form-check-input" type="checkbox" value="" id="genre11">
+                        <label class="form-check-label" for="genre11">
+                            Adult Content
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="genre12">
+                        <label class="form-check-label" for="genre12">
+                            Thought-Provoking
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="genre13">
+                        <label class="form-check-label" for="genre13">
+                            Profane
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="genre14">
+                        <label class="form-check-label" for="genre14">
                             Joyful
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="mood2">
-                        <label class="form-check-label" for="mood2">
+                        <input class="form-check-input" type="checkbox" value="" id="genre15">
+                        <label class="form-check-label" for="genre15">
                             Melancholic
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="mood3">
-                        <label class="form-check-label" for="mood3">
+                        <input class="form-check-input" type="checkbox" value="" id="genre16">
+                        <label class="form-check-label" for="genre16">
                             Reflective
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="mood4">
-                        <label class="form-check-label" for="mood4">
+                        <input class="form-check-input" type="checkbox" value="" id="genre17">
+                        <label class="form-check-label" for="genre17">
                             Serene
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="mood5">
-                        <label class="form-check-label" for="mood5">
+                        <input class="form-check-input" type="checkbox" value="" id="genre18">
+                        <label class="form-check-label" for="genre18">
                             Mysterious
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="mood6">
-                        <label class="form-check-label" for="mood6">
+                        <input class="form-check-input" type="checkbox" value="" id="genre19">
+                        <label class="form-check-label" for="genre19">
                             Playful
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="mood7">
-                        <label class="form-check-label" for="mood7">
+                        <input class="form-check-input" type="checkbox" value="" id="genre20">
+                        <label class="form-check-label" for="genre20">
                             Nostalgic
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="mood8">
-                        <label class="form-check-label" for="mood8">
+                        <input class="form-check-input" type="checkbox" value="" id="genre21">
+                        <label class="form-check-label" for="genre21">
+                            Sweet
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="genre22">
+                        <label class="form-check-label" for="genre22">
                             Empathetic
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="mood9">
-                        <label class="form-check-label" for="mood9">
+                        <input class="form-check-input" type="checkbox" value="" id="genre23">
+                        <label class="form-check-label" for="genre23">
                             Eerie
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="mood10">
-                        <label class="form-check-label" for="mood10">
+                        <input class="form-check-input" type="checkbox" value="" id="genre24">
+                        <label class="form-check-label" for="genre24">
+                            Dark
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="genre25">
+                        <label class="form-check-label" for="genre25">
+                            Inappropriate
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="genre26">
+                        <label class="form-check-label" for="genre26">
                             Inspirational
                         </label>
                     </div>
