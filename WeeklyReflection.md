@@ -286,10 +286,30 @@ Tasks completed:
 Tasks completed:
 * First team meeting where we came up with an idea for our team project
 
-**Time spent 3/24/24- 3 hours**
+**Time spent 3/21/24- 1.25 hours**
+* Started working on the week 9 exercise but I keep getting a 404 error and have not been able to debug
 
+
+**Time spent 3/23/24- 1 hour**
+
+Tasks completed:
+* Worked on project plan and resume for group project
+
+**Time spent 3/24/24- 3 hours**
 Tasks completed:
 * Found examples in AWS documentation to work with [S3](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/java_s3_code_examples.html)
 and [Textract](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/java_textract_code_examples.html) and Java
 * Wrote code for an S3 and Textract class
 * Continued reworking my database to add a genre and a poem_genre table and map with hibernate
+
+---
+
+### Week 10 
+
+**Time spent 3/26/24 3 hours**
+
+Tasks completed:
+* Added logout ability by removing userName attribute from servlet context
+* Set team meeting for tomorrow
+* Did some reading up on JAX-RS and the methods available in the Jackson and Jersey. I found an ObjectMapper class that I will try to implement to get the week 9 exercise working.
+* Some updates to the add poem form
