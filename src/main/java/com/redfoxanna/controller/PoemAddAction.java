@@ -3,7 +3,7 @@ package com.redfoxanna.controller;
 import com.redfoxanna.aws.S3;
 import com.redfoxanna.aws.Textract;
 import com.redfoxanna.entity.Poem;
-import com.redfoxanna.persistence.PoemDao;
+import com.redfoxanna.persistence.GenericDao;
 import org.apache.commons.io.IOUtils;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -59,7 +59,7 @@ public class PoemAddAction extends HttpServlet {
         String poemContent = String.join("/n", textractedValues);
 
         Poem poem = new Poem(poemContent, key, userName);
-        PoemDao poemDao = new PoemDao();
+        GenericDao<Poem> poemDao = new GenericDao<>();
 
         return poemDao.insert(poem);
     }

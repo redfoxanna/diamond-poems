@@ -1,6 +1,7 @@
 package com.redfoxanna.controller;
 
-import com.redfoxanna.persistence.PoemDao;
+import com.redfoxanna.entity.Poem;
+import com.redfoxanna.persistence.GenericDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,7 +26,7 @@ public class SearchPoem extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         // TODO update for a generic dao
-        PoemDao poemDao = new PoemDao();
+        GenericDao<Poem> poemDao = new GenericDao<>();
 
         if (req.getParameter("submit").equals("search")) {
             req.setAttribute("poems", poemDao.getByPropertyLike("content", req.getParameter("searchTerm")));

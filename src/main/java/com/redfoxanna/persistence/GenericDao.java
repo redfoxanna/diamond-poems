@@ -25,6 +25,10 @@ public class GenericDao<T> {
     private Class<T> type;
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    public GenericDao() {
+
+    }
+
     /**
      * Instantiates a new Generic DAO
      * @param type the entity type (User, Poem, etc.)
@@ -162,4 +166,5 @@ public class GenericDao<T> {
     private Session getSession() {
         return SessionFactoryProvider.getSessionFactory().openSession();
     }
+
 }

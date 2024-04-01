@@ -1,6 +1,7 @@
 package com.redfoxanna.controller;
 
-import com.redfoxanna.persistence.PoemDao;
+import com.redfoxanna.entity.Poem;
+import com.redfoxanna.persistence.GenericDao;
 
 import java.io.*;
 import javax.servlet.*;
@@ -31,7 +32,7 @@ public class PoemSearchResultsServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        PoemDao poemDao = new PoemDao();
+        GenericDao<Poem> poemDao = new GenericDao<>();
         request.setAttribute("poems", poemDao.getAll());
         String url = "/poem-search-results.jsp";
 
