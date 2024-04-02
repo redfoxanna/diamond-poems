@@ -13,16 +13,22 @@ import java.util.Properties;
  *
  * @author redfoxanna
  */
-@WebServlet(name = "applicatonStartup",
+@WebServlet(name = "applicationStartup",
         urlPatterns = "/diamondpoem-startup",
         loadOnStartup = 1
 )
 public class ApplicationStartup extends HttpServlet implements PropertiesLoader {
 
     public void init() throws ServletException {
-    Properties properties = loadProperties("/cognito.properties");
+    Properties cognitoProperties = loadProperties("/cognito.properties");
+    Properties databaseProperties = loadProperties("/database.properties");
+    Properties log4jProperties = loadProperties("/log4j2.properties");
+
     ServletContext context = getServletContext();
-    context.setAttribute("cognitoProperties", properties);
+
+    context.setAttribute("cognitoProperties", cognitoProperties);
+    context.setAttribute("databaseProperties", databaseProperties);
+    context.setAttribute("log4jProperties", log4jProperties);
     }
 
 }
