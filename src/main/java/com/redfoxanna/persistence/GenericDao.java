@@ -19,6 +19,8 @@ import java.util.List;
 
 /**
  * A generic DAO
+ *
+ * @param <T> the type parameter
  * @author redfoxanna
  */
 public class GenericDao<T> {
@@ -160,11 +162,32 @@ public class GenericDao<T> {
     }
 
     /**
+     * Finds entities with content properties to search tearm
+     * @param content the poem content
+     * @param searchTerm the desired term
+     * @return the list of results
+     */
+    public List<T> getByPropertyLike(String content, String searchTerm) {
+        Session session = getSession();
+        HibernateCriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<T> query = builder.createQuery(type);
+        Root<T> root = query.from(type);
+
+        // Create a Predicate to filter by the property and search term
+        Predicate predicate = builder.like(root.get(content), "%" + searchTerm + "%");
+
+        // Add the Predicate to the CriteriaQuery
+        query.where(predicate);
+
+        // Execute the query and return the results
+        return session.createQuery(query).getResultList();
+    }
+
+    /**
      * Gets the open session
      * @return the open session
      */
     private Session getSession() {
         return SessionFactoryProvider.getSessionFactory().openSession();
     }
-
 }
