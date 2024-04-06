@@ -287,7 +287,9 @@ Tasks completed:
 * First team meeting where we came up with an idea for our team project
 
 **Time spent 3/21/24- 1.25 hours**
-* Started working on the week 9 exercise but I keep getting a 404 error and have not been able to debug
+
+Tasks completed:
+* Started working on the week 9 exercise and I keep getting a 404 error that I'm still debugging
 
 
 **Time spent 3/23/24- 1 hour**
@@ -296,6 +298,7 @@ Tasks completed:
 * Worked on project plan and resume for group project
 
 **Time spent 3/24/24- 3 hours**
+
 Tasks completed:
 * Found examples in AWS documentation to work with [S3](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/java_s3_code_examples.html)
 and [Textract](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/java_textract_code_examples.html) and Java
@@ -313,3 +316,37 @@ Tasks completed:
 * Set team meeting for tomorrow
 * Did some reading up on JAX-RS and the methods available in the Jackson and Jersey. I found an ObjectMapper class that I will try to implement to get the week 9 exercise working.
 * Some updates to the add poem form
+
+**Time spent 3/27/24 1.5 hours**
+
+Tasks completed:
+* Went over week 9 resources for Jersey and RESTful web services
+* Worked more on week 9 exercise
+
+**Time spent 3/28/24 1 hour**
+
+Tasks completed:
+* I finally got my week 9 exercise working! The issue was nothing in my code, it was with my SQL dialect not being set to mySQL. I wasn't getting a connection to the database.
+
+**Time spent 3/29/24 1.5 hours**
+
+Tasks completed: 
+* Wrote user stories for team project
+* Made an index wireframe for team project
+
+--- 
+
+### Week 11
+
+**Time spent 4/1/24-** 
+
+Tasks completed:
+* Got Cognito issue narrowed down to 
+
+**4/2/24-4/5/24**
+I worked on my team project these days
+
+**Time spent 4/6/24 hours**
+
+Tasks completed:
+* Worked on getting HTTPS implemented in Diamond Poems
