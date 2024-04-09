@@ -109,7 +109,7 @@
       <artifactId>log4j-core</artifactId>
       <version>${log4j-version}</version>
     </dependency>
-    <!-- next 3 dependencies are for jersey -->
+    <!-- next 3 dependencies are for Jersey -->
     <dependency>
       <groupId>org.glassfish.jersey.core</groupId>
       <artifactId>jersey-client</artifactId>
@@ -125,7 +125,7 @@
       <artifactId>jersey-hk2</artifactId>
       <version>${jersey-version}</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+    <!-- Jackson https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
@@ -136,13 +136,12 @@
       <artifactId>jackson-annotations</artifactId>
       <version>${jackson-version}</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+    <!-- Jackson https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
       <version>${jackson-version}</version>
     </dependency>
-
     <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
     <dependency>
       <groupId>com.auth0</groupId>
@@ -161,6 +160,7 @@
       <artifactId>json</artifactId>
       <version>${json-version}</version>
     </dependency>
+    <!-- AWS Textract-->
     <dependency>
       <groupId>software.amazon.awssdk</groupId>
       <artifactId>textract</artifactId>
