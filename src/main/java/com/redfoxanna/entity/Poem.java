@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -20,15 +21,15 @@ public class Poem {
     private int id;
     @Column(name="poem_content")
     private String content;
-    @Column(name="user_name")
-    private String userName;
-
     @Column(name="poem_image")
     private String poemImage;
+
+    @Column(name="cognito_username")
+    private String userName;
     @Column(name="created_at")
     private Timestamp createdAt;
-    @ManyToMany(mappedBy = "poems")
-    private Set<Genre> genres;
+    @OneToMany(mappedBy = "poem", fetch = FetchType.EAGER)
+    private Set<PoemGenre> genres = new HashSet<PoemGenre>();
 
 
     /**
@@ -44,7 +45,6 @@ public class Poem {
         this.content = content;
         this.poemImage = poemImage;
         this.userName = userName;
-
     }
 
     /**

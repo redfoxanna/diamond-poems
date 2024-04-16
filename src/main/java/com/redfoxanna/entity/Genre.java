@@ -3,6 +3,7 @@ package com.redfoxanna.entity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -22,13 +23,8 @@ public class Genre {
     @Column(name = "genre_name")
     private String genreName;
 
-    @ManyToMany
-    @JoinTable(
-            name = "poem_genre",
-            joinColumns = @JoinColumn(name = "genre_id"),
-            inverseJoinColumns = @JoinColumn(name = "poem_id")
-    )
-    private Set<Poem> poems;
+    @OneToMany(mappedBy = "genre", fetch = FetchType.EAGER)
+    private Set<PoemGenre> genres = new HashSet<PoemGenre>();
 
     /**
      * Instantiates a new genre with parameter.
