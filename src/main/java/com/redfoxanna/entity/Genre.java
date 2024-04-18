@@ -24,7 +24,7 @@ public class Genre {
     private String genreName;
 
     @OneToMany(mappedBy = "genre", fetch = FetchType.EAGER)
-    private Set<PoemGenre> genres = new HashSet<PoemGenre>();
+    private Set<PoemGenre> poems = new HashSet<PoemGenre>();
 
     /**
      * Instantiates a new genre with parameter.
@@ -39,7 +39,6 @@ public class Genre {
      * Instantiates a new Genre.
      */
     public Genre() {
-
     }
 
     /**
@@ -76,5 +75,23 @@ public class Genre {
      */
     public int getId() {
         return id;
+    }
+
+    /**
+     * Gets poems.
+     *
+     * @return the poems
+     */
+    public Set<PoemGenre> getPoems() {
+        return poems;
+    }
+
+    /**
+     * Sets poems.
+     *
+     * @param poems the poems
+     */
+    public void setPoems(Set<PoemGenre> poems) {
+        this.poems = poems;
     }
 }

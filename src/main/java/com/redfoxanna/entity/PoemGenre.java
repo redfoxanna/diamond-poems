@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * The type Poem genre.
@@ -18,19 +19,18 @@ public class PoemGenre implements Serializable {
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "poem", referencedColumnName = "id")
+    @JoinColumn(name = "poem_id", referencedColumnName = "id")
     private Poem poem;
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "genre", referencedColumnName = "id")
+    @JoinColumn(name = "genre_id", referencedColumnName = "id")
     private Genre genre;
 
     /**
      * Instantiates a new Poem genre.
      */
     public PoemGenre() {
-
     }
 
     /**
@@ -96,5 +96,18 @@ public class PoemGenre implements Serializable {
      */
     public void setGenre(Genre genre) {
         this.genre = genre;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PoemGenre poemGenre = (PoemGenre) o;
+        return id == poemGenre.id && Objects.equals(poem, poemGenre.poem) && Objects.equals(genre, poemGenre.genre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, poem, genre);
     }
 }

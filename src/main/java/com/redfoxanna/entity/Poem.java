@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import java.sql.Timestamp;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -23,14 +24,12 @@ public class Poem {
     private String content;
     @Column(name="poem_image")
     private String poemImage;
-
     @Column(name="cognito_username")
     private String userName;
     @Column(name="created_at")
     private Timestamp createdAt;
-    @OneToMany(mappedBy = "poem", fetch = FetchType.EAGER)
-    private Set<PoemGenre> genres = new HashSet<PoemGenre>();
-
+    @OneToMany(mappedBy = "poem", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    private Set<PoemGenre> genres = new HashSet<>();
 
     /**
      * No arg constructor
@@ -102,7 +101,7 @@ public class Poem {
     }
 
     /**
-     * Gets the user name of poem author
+     * Gets the username of poem author
      * @return the user's id
      */
     public String getUserName() {
@@ -126,11 +125,24 @@ public class Poem {
         return createdAt;
     }
 
+    /**
+     * Gets genres.
+     *
+     * @return the genres
+     */
+    public Set<PoemGenre> getGenres() {
+        return genres;
+    }
 
     /**
-     * Gives all poem variables and values
-     * @return all the params
+     * Sets genres.
+     *
+     * @param genres the genres
      */
+    public void setGenres(Set<PoemGenre> genres) {
+        this.genres = genres;
+    }
+
     @Override
     public String toString() {
         return "Poem{" +
@@ -140,6 +152,19 @@ public class Poem {
                 ", userName=" + userName +
                 ", createdAt=" + createdAt +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Poem poem = (Poem) o;
+        return id == poem.id && Objects.equals(content, poem.content) && Objects.equals(poemImage, poem.poemImage) && Objects.equals(userName, poem.userName) && Objects.equals(createdAt, poem.createdAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, content, poemImage, userName, createdAt);
     }
 }
 
