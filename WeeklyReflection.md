@@ -338,15 +338,46 @@ Tasks completed:
 
 ### Week 11
 
-**Time spent 4/1/24-** 
+**4/2/24-4/5/24 4 hours**
+* Team meeting
+* Team project tasks
+
+**Time spent 4/6/24 2.5 hours**
 
 Tasks completed:
-* Got Cognito issue narrowed down to 
+* Worked on getting HTTPS implemented in Diamond Poems, decided I have a roadblock and made an appointment with Paula.
 
-**4/2/24-4/5/24**
-I worked on my team project these days
+---
 
-**Time spent 4/6/24 hours**
+### Week 12
+
+**Time this week: 8 hours**
 
 Tasks completed:
-* Worked on getting HTTPS implemented in Diamond Poems
+* Met with Paula about Diamond Poems
+* Continued working on team project tasks
+* Team meeting
+* Recorded presentation with team
+
+---
+
+### Week 13
+
+**Time spent 4/15 1.5 hours**
+
+Tasks completed:
+* Watched videos and took notes on week 13 async messaging readings
+
+**Time spent 4/16 2.5 hours**
+
+Tasks completed:
+* More work on reconfiguring for a many-to-many relationship 
+* Worked on getting bootstrap for styling implemented (correct classes and annotations for the version I'm using 3.3.7)
+* Added the answers to my FAQ jsp and got the collapse feature working
+
+**Time spent 4/18/24 3.5 hours**
+
+Tasks completed:
+* Reran the unit tests after adding the many-to-many relationship and all the tests failed
+* Re-watched Hibernate many-to-many videos to refresh and trouble shoot
+* 
