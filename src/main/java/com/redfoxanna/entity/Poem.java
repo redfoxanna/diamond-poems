@@ -24,11 +24,9 @@ public class Poem {
     private String content;
     @Column(name="poem_image")
     private String poemImage;
-    @Column(name="cognito_username")
-    private String userName;
     @Column(name="created_at")
     private Timestamp createdAt;
-    @OneToMany(mappedBy = "poem", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "poem", fetch = FetchType.EAGER)
     private Set<PoemGenre> genres = new HashSet<>();
 
     /**
@@ -40,10 +38,9 @@ public class Poem {
     /**
      * Constructor for a poem with parameters
      */
-    public Poem(String content, String poemImage, String userName) {
+    public Poem(String content, String poemImage) {
         this.content = content;
         this.poemImage = poemImage;
-        this.userName = userName;
     }
 
     /**
@@ -101,22 +98,6 @@ public class Poem {
     }
 
     /**
-     * Gets the username of poem author
-     * @return the user's id
-     */
-    public String getUserName() {
-        return userName;
-    }
-
-    /**
-     * Sets the user's username
-     * @param userName the userName referenced by cognito
-     */
-    public void setUser(String userName) {
-        this.userName = userName;
-    }
-
-    /**
      * Gets created at.
      *
      * @return the created at
@@ -149,7 +130,6 @@ public class Poem {
                 "id=" + id +
                 ", content='" + content + '\'' +
                 ", poemImage='" + poemImage + '\'' +
-                ", userName=" + userName +
                 ", createdAt=" + createdAt +
                 '}';
     }
@@ -159,12 +139,12 @@ public class Poem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Poem poem = (Poem) o;
-        return id == poem.id && Objects.equals(content, poem.content) && Objects.equals(poemImage, poem.poemImage) && Objects.equals(userName, poem.userName) && Objects.equals(createdAt, poem.createdAt);
+        return id == poem.id && Objects.equals(content, poem.content) && Objects.equals(poemImage, poem.poemImage) && Objects.equals(createdAt, poem.createdAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, content, poemImage, userName, createdAt);
+        return Objects.hash(id, content, poemImage, createdAt);
     }
 }
 

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -93,5 +94,18 @@ public class Genre {
      */
     public void setPoems(Set<PoemGenre> poems) {
         this.poems = poems;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Genre genre = (Genre) o;
+        return id == genre.id && Objects.equals(genreName, genre.genreName) && Objects.equals(poems, genre.poems);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, genreName, poems);
     }
 }
