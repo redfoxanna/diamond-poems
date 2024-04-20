@@ -1,5 +1,6 @@
 package com.redfoxanna.persistence;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -27,8 +28,10 @@ public class GenericDao<T> {
     private Class<T> type;
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Zero-param constructor
+     */
     public GenericDao() {
-
     }
 
     /**
@@ -44,7 +47,7 @@ public class GenericDao<T> {
      * @param id the id to search by
      * @return an entity
      */
-    public <T> T getById(int id) {
+    public <T>T getById(int id) {
         Session session = getSession();
         T entity = (T)session.get(type, id);
         session.close();
@@ -76,21 +79,6 @@ public class GenericDao<T> {
     }
 
     /**
-     * insert a new entity
-     * @param entity the entity to be inserted
-     */
-    //public int insert(T entity) {
-      //  int id = 0;
-        //Session session = getSession();
-        //Transaction transaction = session.beginTransaction();
-        //session.persist(entity);
-        //transaction.commit();
-        //id = (T)entity.getById();
-        //session.close();
-        //return id;
-    //}
-
-    /**
      * Inserts the entity.
      *
      * @param entity entity to be inserted
@@ -99,15 +87,20 @@ public class GenericDao<T> {
         int id = 0;
         Session session = getSession();
         Transaction transaction = session.beginTransaction();
-        // TODO we are using a deprecated method here, is there a better way?
-        id = (int)session.save(entity);
+        session.persist(entity); // Use persist instead of save
         transaction.commit();
+        try {
+            Method getIdMethod = entity.getClass().getMethod("getId");
+            id = (int) getIdMethod.invoke(entity);
+        } catch (Exception e) {
+            logger.error("Error inserting the entity");
+        }
         session.close();
         return id;
     }
 
     /**
-     *
+     * Gets all in a list
      * @return the list of all entities from the query
      */
     public List<T> getAll() {
@@ -122,7 +115,7 @@ public class GenericDao<T> {
 
     /**
      * Finds entities by one of its properties.
-     * sample usage: findByPropertyEqual("lastname", "Curry")
+     * sample usage: findByPropertyEqual("username", "Curry")
      * @param propertyName the property name.
      * @param value the value by which to find.
      * @return the list of all entities found matching the criteria
