@@ -18,20 +18,21 @@
                 </div>
                 <div class="form-group">
                     <label>Genres</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="genre1">
-                        <label class="form-check-label" for="genre1">
-                            Love and Relationships
-                        </label>
-                    </div>
-                    <!-- Add more checkboxes as needed -->
-                    <!-- Example: -->
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="genre2">
-                        <label class="form-check-label" for="genre2">
-                            Nature and the Environment
-                        </label>
-                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- First column of checkboxes -->
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="genre1">
+                                <label class="form-check-label" for="genre1">
+                                    Love and Relationships
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="genre2">
+                                <label class="form-check-label" for="genre2">
+                                    Nature and the Environment
+                                </label>
+                            </div>
                     <!-- Repeat this block to create more checkboxes -->
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="genre3">
@@ -99,12 +100,15 @@
                             Profane
                         </label>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="genre14">
-                        <label class="form-check-label" for="genre14">
-                            Joyful
-                        </label>
-                    </div>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- Second column of checkboxes -->
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="genre14">
+                                <label class="form-check-label" for="genre14">
+                                    Joyful
+                                </label>
+                            </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="genre15">
                         <label class="form-check-label" for="genre15">
