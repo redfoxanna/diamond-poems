@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import java.sql.Timestamp;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 
@@ -26,7 +27,7 @@ public class Poem {
     private String poemImage;
     @Column(name="created_at")
     private Timestamp createdAt;
-    @OneToMany(mappedBy = "poem", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "poem", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private Set<PoemGenre> genres = new HashSet<>();
 
     /**
@@ -139,12 +140,12 @@ public class Poem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Poem poem = (Poem) o;
-        return id == poem.id && Objects.equals(content, poem.content) && Objects.equals(poemImage, poem.poemImage) && Objects.equals(createdAt, poem.createdAt);
+        return id == poem.id && Objects.equals(content, poem.content) && Objects.equals(poemImage, poem.poemImage) && Objects.equals(createdAt, poem.createdAt) && Objects.equals(genres, poem.genres);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, content, poemImage, createdAt);
+        return Objects.hash(id, content, poemImage, createdAt, genres);
     }
 }
 

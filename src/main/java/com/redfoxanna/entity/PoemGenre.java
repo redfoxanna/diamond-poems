@@ -97,17 +97,4 @@ public class PoemGenre implements Serializable {
     public void setGenre(Genre genre) {
         this.genre = genre;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        PoemGenre poemGenre = (PoemGenre) o;
-        return id == poemGenre.id && Objects.equals(poem, poemGenre.poem) && Objects.equals(genre, poemGenre.genre);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, poem, genre);
-    }
 }

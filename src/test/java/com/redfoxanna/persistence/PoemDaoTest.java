@@ -1,11 +1,14 @@
 package com.redfoxanna.persistence;
 
+import com.redfoxanna.entity.Genre;
 import com.redfoxanna.entity.Poem;
+import com.redfoxanna.entity.PoemGenre;
+import com.redfoxanna.util.Database;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import com.redfoxanna.util.Database;
+
 
 import java.util.List;
 
@@ -14,43 +17,38 @@ import static org.junit.jupiter.api.Assertions.*;
 class PoemDaoTest {
 
     GenericDao<Poem> poemDao;
-    //GenericDao<Genre> genreDao;
-
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     @BeforeEach
     void setUp() {
+        poemDao = new GenericDao<>(Poem.class);
         Database database = Database.getInstance();
         database.runSQL("cleanDB.sql");
-        poemDao = new GenericDao<>(Poem.class);
-        //genreDao = new GenericDao<>(Genre.class);
     }
 
     @Test
-    void getAllSuccess() {
-        List<Poem> poemList = poemDao.getAll();
-        assertNotNull(poemList);
-        assertEquals(2, poemList.size());
+    void getAll() {
+        List<Poem> poems = poemDao.getAll();
+        assertNotNull(poems);
+        assertEquals(2, poems.size());
     }
 
     @Test
-    void getByIdSuccess() {
+    void getById() {
         Poem retrievedPoem = poemDao.getById(1);
-        logger.debug("The retrieved poem: " + retrievedPoem);
         assertNotNull(retrievedPoem);
-        logger.debug("The retrieved poem for the update: " + retrievedPoem);
         assertEquals("Pineapple, on pizza, I love pizza, but not the heartburn, it burns like, hot fire, spicy", retrievedPoem.getContent());
     }
 
     @Test
-    void insertSuccess() {
+    void insert() {
         Poem poemToInsert = new Poem("This is just a test","testimg.png");
-        int insertedPoemId = poemDao.insert(poemToInsert);
+        int insertedPoemId = poemDao.insertEntity(poemToInsert);
         assertNotEquals(0, insertedPoemId);
     }
 
     @Test
-    void updateSuccess() {
+    void update() {
         Poem poemToUpdate = poemDao.getById(1);
         poemToUpdate.setContent("New Poem Content");
         poemDao.update(poemToUpdate);
@@ -59,12 +57,10 @@ class PoemDaoTest {
     }
 
     @Test
-    void deleteSuccess() {
+    void delete() {
         Poem poemToDelete = poemDao.getById(1);
         poemDao.delete(poemToDelete);
         assertNull(poemDao.getById(1));
     }
-
-
 
 }
