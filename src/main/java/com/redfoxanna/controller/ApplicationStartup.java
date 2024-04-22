@@ -23,6 +23,7 @@ public class ApplicationStartup extends HttpServlet implements PropertiesLoader 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     // TODO load ALL properties and remove duplicate code from other classes
+    // TODO add s3 and Textract properties here
     public void init() throws ServletException {
         logger.info("Loading the application properties...");
         Properties cognitoProperties = loadProperties("/cognito.properties");
