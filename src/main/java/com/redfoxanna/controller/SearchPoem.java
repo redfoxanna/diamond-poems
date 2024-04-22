@@ -25,8 +25,7 @@ public class SearchPoem extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        // TODO update for a generic dao
-        GenericDao<Poem> poemDao = new GenericDao<>();
+        GenericDao<Poem> poemDao = new GenericDao<>(Poem.class);
 
         if (req.getParameter("submit").equals("search")) {
             req.setAttribute("poems", poemDao.getByPropertyLike("content", req.getParameter("searchTerm")));

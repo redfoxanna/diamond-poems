@@ -20,15 +20,15 @@ import java.util.Properties;
 public class ApplicationStartup extends HttpServlet implements PropertiesLoader {
 
     public void init() throws ServletException {
-    Properties cognitoProperties = loadProperties("/cognito.properties");
-    Properties databaseProperties = loadProperties("/database.properties");
-    Properties log4jProperties = loadProperties("/log4j2.properties");
+    //Properties cognitoProperties = loadProperties("/cognito.properties");
+    //Properties databaseProperties = loadProperties("/database.properties");
+    //Properties log4jProperties = loadProperties("/log4j2.properties");
 
-    ServletContext context = getServletContext();
+    //ServletContext context = getServletContext();
 
-    context.setAttribute("cognitoProperties", cognitoProperties);
-    context.setAttribute("databaseProperties", databaseProperties);
-    context.setAttribute("log4jProperties", log4jProperties);
+    //context.setAttribute("cognitoProperties", cognitoProperties);
+    //context.setAttribute("databaseProperties", databaseProperties);
+    //context.setAttribute("log4jProperties", log4jProperties);
     }
 
 }

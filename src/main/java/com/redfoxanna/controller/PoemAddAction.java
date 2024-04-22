@@ -58,10 +58,10 @@ public class PoemAddAction extends HttpServlet {
         ArrayList<String> textractedValues = textract.getS3Text(textract.getClient(), bucketName, key);
         String poemContent = String.join("/n", textractedValues);
 
-        Poem poem = new Poem(poemContent, key, userName);
-        GenericDao<Poem> poemDao = new GenericDao<>();
+        Poem poem = new Poem(poemContent, key);
+        GenericDao<Poem> poemDao = new GenericDao<>(Poem.class);
 
-        return poemDao.insert(poem);
+        return poemDao.insertEntity(poem);
     }
     private File writeTmpFile(InputStream initialStream, String filePath) throws IOException {
         File targetFile = new File(String.format("tmp/%s", filePath));

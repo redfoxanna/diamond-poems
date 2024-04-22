@@ -39,7 +39,7 @@ What is OCR?
 * Web Services consumed using Java
     * AWS Textract
 * CSS
-    * Bootstrap
+    * Bootstrap 3.3.7
 * Data Validation
     * Bootstrap Validator for front end
     * Explore Hibernate's validation
@@ -50,8 +50,6 @@ What is OCR?
 * Independent Research Topic/s
     * CI tools in AWS
     * OCR API
-    * Hibernate Validation
-    * Hibernate Search
 * Unit Testing
     * JUnit 5 tests to achieve 80%+ code coverage
 * IDE: IntelliJ IDEA

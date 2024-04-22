@@ -18,15 +18,11 @@ import java.util.UUID;
 
 
 /**
- * Before running this Java V2 code example, set up your development
- * environment, including your credentials.
- * <p>
- * For more information, see the following documentation topic:
- * <p>
+ *
  * https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/get-started.html
  */
 public class Textract {
-    private final Logger log = LogManager.getLogger(this.getClass());
+    private final Logger logger = LogManager.getLogger(this.getClass());
 
     private TextractClient textractClient;
 
@@ -40,7 +36,7 @@ public class Textract {
     /**
      * Instantiates a new Textract.
      *
-     * @param tc the tc
+     * @param tc the textract client
      */
     public Textract(TextractClient tc) {
         this.textractClient = tc;
@@ -55,7 +51,6 @@ public class Textract {
         return textractClient;
     };
 
-
     /**
      * Sets client.
      */
@@ -67,7 +62,7 @@ public class Textract {
                     .region(region)
                     .build();
         } catch (TextractException te) {
-            log.error("Failed to initialize textract client.", te);
+            logger.error("Failed to initialize textract client.", te);
         }
     }
 
@@ -78,10 +73,9 @@ public class Textract {
         try {
             textractClient.close();
         } catch (TextractException te) {
-            log.error("Failed to close textract client.", te);
+            logger.error("Failed to close textract client.", te);
         }
     }
-
 
     /**
      * Gets s 3 text.
@@ -116,11 +110,16 @@ public class Textract {
 
             return lines;
         } catch (TextractException te) {
-            log.error("Failed to fetch s3 object.", te);
+            logger.error("Failed to fetch s3 object.", te);
             return new ArrayList<>();
         }
     }
 
+    /**
+     * <a href="https://docs.aws.amazon.com/textract/latest/dg/API_Block.html">...</a>
+     * @param block the block of text
+     * @param lines the individual lines from that block
+     */
     private void getRelevantBlockText(Block block, ArrayList<String> lines) {
         BlockType blockType = block.blockType();
 

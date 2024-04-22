@@ -210,11 +210,10 @@ h1#nav-logo {
     position: relative;
     font-size: 18px;
     line-height: 24px;
-    font-weight: 400;
-    font-weight: 600;
+    font-weight: bold;
     padding-left: 25px;
     cursor: pointer;
-    color: #c54811;
+    color: #f2520b;
     transition: 0.3s;
 }
 

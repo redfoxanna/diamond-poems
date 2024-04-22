@@ -15,7 +15,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 public class S3 {
-    private final Logger log = LogManager.getLogger(this.getClass());
+    private final Logger logger = LogManager.getLogger(this.getClass());
 
     private S3Client s3Client;
 
@@ -55,7 +55,7 @@ public class S3 {
                     .region(region)
                     .build();
         } catch (S3Exception s3e) {
-            log.error("Failed to initialize s3 client.", s3e);
+            logger.error("Failed to initialize s3 client.", s3e);
         }
     }
 
@@ -66,11 +66,11 @@ public class S3 {
         try {
             s3Client.close();
         } catch (S3Exception s3e) {
-            log.error("Failed to close s3 client.", s3e);
+            logger.error("Failed to close s3 client.", s3e);
         }
     }
     /**
-     * Make key string.
+     * Makes a unique key string.
      *
      * @param userName the userName in cognito
      * @return the string
@@ -88,8 +88,16 @@ public class S3 {
                 randomId);
     }
 
-    // This example uses RequestBody.fromFile to avoid loading the whole file into
-    // memory.
+    // Uses RequestBody.fromFile to avoid loading the whole file into memory
+
+    /**
+     *
+     * @param s3
+     * @param bucketName
+     * @param objectKey
+     * @param objectPath
+     * @return
+     */
     public String putS3Object(S3Client s3, String bucketName, String objectKey, String objectPath) {
         try {
             PutObjectRequest putOb = PutObjectRequest.builder()
@@ -101,7 +109,7 @@ public class S3 {
             return putObjectResponse.eTag();
 
         } catch (S3Exception e) {
-            log.error("Failed to upload file to s3.", e);
+            logger.error("Failed to upload file to s3.", e);
             throw(new ProcessingException("Failed to write S3 Object"));
         }
     }

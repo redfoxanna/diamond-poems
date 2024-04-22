@@ -16,9 +16,6 @@ import java.io.IOException;
         urlPatterns = {"/logOut"}
 )
 
-/** Logs a user out
- *
- */
 public class LogOut extends HttpServlet implements PropertiesLoader {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
@@ -32,9 +29,8 @@ public class LogOut extends HttpServlet implements PropertiesLoader {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         HttpSession session = req.getSession();
-        logger.debug("User logged out: " + session.getAttribute("userName"));
+        logger.info("User logged out: " + session.getAttribute("userName"));
         session.removeAttribute("userName");
         String url = "index.jsp";
         resp.sendRedirect(url);
