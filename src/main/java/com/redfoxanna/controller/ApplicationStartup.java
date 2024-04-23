@@ -29,7 +29,7 @@ public class ApplicationStartup extends HttpServlet implements PropertiesLoader 
     // TODO add s3 and Textract properties here
     // TODO if properties weren't loaded properly, route to an error page
     public void init() throws ServletException {
-
+        logger.info("Loading the genres...");
         List<Genre> genres = loadGenres();
         logger.info(genres);
         logger.info("Loading the application properties...");
