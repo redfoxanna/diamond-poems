@@ -42,7 +42,7 @@ class PoemDaoTest {
 
     @Test
     void insert() {
-        Poem poemToInsert = new Poem("This is just a test","testimg.png");
+        Poem poemToInsert = new Poem("This is just a test","testimg.png", "redfoxanna");
         int insertedPoemId = poemDao.insertEntity(poemToInsert);
         assertNotEquals(0, insertedPoemId);
     }
