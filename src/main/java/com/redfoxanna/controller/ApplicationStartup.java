@@ -1,5 +1,7 @@
 package com.redfoxanna.controller;
 
+import com.redfoxanna.entity.Genre;
+import com.redfoxanna.persistence.GenericDao;
 import com.redfoxanna.util.PropertiesLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,6 +10,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -26,6 +29,9 @@ public class ApplicationStartup extends HttpServlet implements PropertiesLoader 
     // TODO add s3 and Textract properties here
     // TODO if properties weren't loaded properly, route to an error page
     public void init() throws ServletException {
+
+        List<Genre> genres = loadGenres();
+        logger.info(genres);
         logger.info("Loading the application properties...");
         Properties cognitoProperties = loadProperties("/cognito.properties");
         logger.info(cognitoProperties);
@@ -36,8 +42,18 @@ public class ApplicationStartup extends HttpServlet implements PropertiesLoader 
 
         ServletContext context = getServletContext();
 
+        context.setAttribute("genres", genres);
         context.setAttribute("cognitoProperties", cognitoProperties);
         context.setAttribute("databaseProperties", databaseProperties);
         context.setAttribute("log4jProperties", log4jProperties);
+    }
+
+    /**
+     *  Loads the genres from the database using the GenericDao
+     * @return the list of Genre objects to obtain the genre names
+     */
+    private List<Genre> loadGenres() {
+        GenericDao<Genre> genreDao = new GenericDao<>(Genre.class);
+        return genreDao.getAll();
     }
 }
