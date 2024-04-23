@@ -7,7 +7,11 @@ import com.redfoxanna.entity.Poem;
 import com.redfoxanna.entity.PoemGenre;
 import com.redfoxanna.persistence.GenericDao;
 import org.apache.commons.io.IOUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,11 +31,14 @@ import java.util.Set;
 @WebServlet(name = "addPoem",
         urlPatterns = {"/poem-add"}
 )
+@MultipartConfig
 public class PoemAddAction extends HttpServlet {
     private S3 s3;
     private Textract textract;
     private String bucketName;
     private GenericDao<Genre> genreDao;
+
+    private final Logger logger = LogManager.getLogger(this.getClass());
 
     @Override
     public void init() throws ServletException {
@@ -52,11 +59,12 @@ public class PoemAddAction extends HttpServlet {
      */
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        logger.info("Here we go! Let's POST!");
+        String userName = request.getAttribute("userName").toString();
+        String[] genres = request.getParameterValues("genres");
+
         Part filePart = request.getPart("poemImage");
         InputStream fileContent = filePart.getInputStream();
-        String userName = request.getAttribute("userName").toString();
-        // TODO process genres?
-        String[] genres = request.getParameterValues("genres");
 
         // Extract poem content using Textract
         ArrayList<String> textractedValues = textract.getS3Text(textract.getClient(), bucketName, filePart.getSubmittedFileName());
@@ -67,8 +75,8 @@ public class PoemAddAction extends HttpServlet {
 
         // TODO: Add success message to the session
 
-        // TODO: redirect to poem edit page
-        //String url = "/poem-add-display.jsp";
+
+        //String url = "/poem-edit.jsp";
         //response.sendRedirect(request.getContextPath() + url);
     }
 
