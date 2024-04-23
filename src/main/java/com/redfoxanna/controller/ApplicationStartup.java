@@ -31,7 +31,11 @@ public class ApplicationStartup extends HttpServlet implements PropertiesLoader 
     public void init() throws ServletException {
         logger.info("Loading the genres...");
         List<Genre> genres = loadGenres();
-        logger.info(genres);
+
+        for (Genre genre : genres) {
+            logger.info("Genre: " + genre.getGenreName());
+
+        }
         logger.info("Loading the application properties...");
         Properties cognitoProperties = loadProperties("/cognito.properties");
         logger.info(cognitoProperties);
