@@ -38,15 +38,13 @@ What is OCR?
     * Maven
 * Web Services consumed using Java
     * AWS Textract
+    * AWS S3
 * CSS
     * Bootstrap 3.3.7
-* Data Validation
-    * Bootstrap Validator for front end
-    * Explore Hibernate's validation
 * Logging
     * Log4J2
 * Hosting
-    * AWS
+    * AWS Elastic Beanstalk
 * Independent Research Topic/s
     * CI tools in AWS
     * OCR API
