@@ -4,20 +4,19 @@
 <c:import url="header.jsp" />
 <body>
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <form>
-                <h1>Upload a Poem:</h1>
+    <h1>Upload a Poem:</h1>
+    <div class="row">
+            <form id="new-poem" action="poem-add" method="post" enctype="multipart/form-data">
+
                 <div class="form-group">
+                    <h2>Step 1:</h2>
                     <label for="poemImage">Upload Poem Image</label>
-                    <input type="file" class="form-control-file" id="poemImage">
+                    <input type="file" class="form-control-file" id="poemImage" name="poemImage">
                 </div>
+
                 <div class="form-group">
-                    <label for="poemText">Enter Poem Text</label>
-                    <textarea class="form-control" id="poemText" rows="4"></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Genres</label>
+                    <h2>Step 2:</h2>
+                    <label>Select Genres (check all that apply)</label>
                     <div class="row">
                         <div class="col-md-6">
                             <!-- First column of checkboxes -->
@@ -183,10 +182,11 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
-</div>
 </body>
 <c:import url="footer.jsp" />
 </html>
