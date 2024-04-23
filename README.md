@@ -58,7 +58,7 @@ What is OCR?
 * [Screen Design](DesignDocuments/Wireframes)
 * [Design Considerations](DesignDocuments/design-considerations.pdf)
 * [Application Flow](DesignDocuments/diamond-poems-flowchart.pdf)
-* [Database Design](DesignDocuments/databaseDiagram.png)
+* [Database Design](DesignDocuments/ERD.png)
 
 ### Project Planning
 * [User Stories](DesignDocuments/user-stories.md)
