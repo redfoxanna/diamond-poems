@@ -11,7 +11,8 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * The Poem class
+ * The Poem class that represents
+ * a Diamond Poem entity
  *
  * @author redfoxanna
  */

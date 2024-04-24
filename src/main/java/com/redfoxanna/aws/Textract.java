@@ -89,6 +89,9 @@ public class Textract {
         try {
             ArrayList<String> lines = new ArrayList<>();
 
+            logger.info("docname: " + docName);
+            logger.info("bucket name: " + bucketName);
+
             S3Object s3Object = S3Object.builder()
                     .bucket(bucketName)
                     .name(docName)
@@ -106,6 +109,7 @@ public class Textract {
             DetectDocumentTextResponse textResponse = textractClient.detectDocumentText(detectDocumentTextRequest);
             for (Block block : textResponse.blocks()) {
                 getRelevantBlockText(block, lines);
+                logger.info("The block: " + block);
             }
 
             return lines;

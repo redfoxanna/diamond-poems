@@ -29,13 +29,7 @@ public class ApplicationStartup extends HttpServlet implements PropertiesLoader 
     // TODO add s3 and Textract properties here
     // TODO if properties weren't loaded properly, route to an error page
     public void init() throws ServletException {
-        logger.info("Loading the genres...");
-        List<Genre> genres = loadGenres();
 
-        for (Genre genre : genres) {
-            logger.info("Genre: " + genre.getGenreName());
-
-        }
         logger.info("Loading the application properties...");
         Properties cognitoProperties = loadProperties("/cognito.properties");
         logger.info(cognitoProperties);
@@ -46,18 +40,8 @@ public class ApplicationStartup extends HttpServlet implements PropertiesLoader 
 
         ServletContext context = getServletContext();
 
-        context.setAttribute("genres", genres);
         context.setAttribute("cognitoProperties", cognitoProperties);
         context.setAttribute("databaseProperties", databaseProperties);
         context.setAttribute("log4jProperties", log4jProperties);
-    }
-
-    /**
-     *  Loads the genres from the database using the GenericDao
-     * @return the list of Genre objects to obtain the genre names
-     */
-    private List<Genre> loadGenres() {
-        GenericDao<Genre> genreDao = new GenericDao<>(Genre.class);
-        return genreDao.getAll();
     }
 }

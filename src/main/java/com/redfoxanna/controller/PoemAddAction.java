@@ -19,9 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.IOException;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Servlet that handles adding a new poem to the database
@@ -59,64 +57,30 @@ public class PoemAddAction extends HttpServlet {
      */
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        logger.info("Here we go! Let's POST!");
-        String userName = request.getAttribute("userName").toString();
-        String[] genres = request.getParameterValues("genres");
+
+        // TODO don't hard code username
+        String userName = "redfoxanna";
 
         Part filePart = request.getPart("poemImage");
         InputStream fileContent = filePart.getInputStream();
 
-        // Extract poem content using Textract
-        ArrayList<String> textractedValues = textract.getS3Text(textract.getClient(), bucketName, filePart.getSubmittedFileName());
-        String poemContent = String.join("\n", textractedValues);
-
-        // Save the poem to the database
-        int poemId = addPoem(fileContent, userName, poemContent, filePart.getSubmittedFileName(), genres);
-
-        // TODO: Add success message to the session
-
-
-        //String url = "/poem-edit.jsp";
-        //response.sendRedirect(request.getContextPath() + url);
-    }
-
-    /**
-     * Adds the poem to the database via the DAO
-     * @param fileStream the file steam
-     * @param userName the author of the poem
-     * @param poemContent the content of the uploaded poem
-     * @param poemImageFileName the name of the image file
-     * @param genres the genres associated with the uploaded poem
-     * @return the inserted Poem entity
-     * @throws IOException if an error reading the file
-     */
-    private int addPoem(InputStream fileStream, String userName, String poemContent, String poemImageFileName, String[] genres) throws IOException {
         String key = s3.makeKey(userName);
-        File saveFile = writeTmpFile(fileStream, key);
+        File saveFile = writeTmpFile(fileContent, key);
 
         s3.putS3Object(s3.getClient(), bucketName, key, saveFile.getPath());
 
-        // Extract genres from the array
-        Set<PoemGenre> poemGenres = new HashSet<>();
-        for (String genreName : genres) {
-            PoemGenre poemGenre = new PoemGenre();
 
-            // Retrieve the Genre object corresponding to the genre name from the database
-            Genre genre = genreDao.getByPropertyEqual("genreName", genreName).get(0);
+        ArrayList<String> textractedValues = textract.getS3Text(textract.getClient(), bucketName, key);
+        String poemContent = String.join("\n", textractedValues);
+        logger.info("The poem content: " + poemContent);
 
-            poemGenre.setGenre(genre);
+        // TODO: Add success message to the session
+        // TODO use generic dao to insert poem into database
 
-            // Add the PoemGenre object to the set
-            poemGenres.add(poemGenre);
-        }
-
-        // Create Poem object with content, image URL, current timestamp, and genres
-        Poem poem = new Poem(poemContent, key, poemGenres.toString());
-
-        // Save the Poem object to the database and return the ID
-        GenericDao<Poem> poemDao = new GenericDao<>(Poem.class);
-        return poemDao.insertEntity(poem);
+        String url = "/poem-edit.jsp";
+        response.sendRedirect(request.getContextPath() + url);
     }
+
 
     /**
      * Creates a temporary file on the server
@@ -126,7 +90,7 @@ public class PoemAddAction extends HttpServlet {
      * @throws IOException if an error reading the file
      */
     private File writeTmpFile(InputStream initialStream, String filePath) throws IOException {
-        File targetFile = new File(String.format("tmp/%s", filePath));
+        File targetFile = File.createTempFile(filePath, null);
         OutputStream outStream = new FileOutputStream(targetFile);
 
         byte[] buffer = new byte[8 * 1024];
