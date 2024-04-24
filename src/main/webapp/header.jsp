@@ -11,7 +11,6 @@
         <nav class="navbar">
             <ul>
                 <li><a href="${pageContext.request.contextPath}">Home</a></li>
-                <li><a href="${pageContext.request.contextPath}/poem-add-display">Upload Poem</a></li>
                 <li><a href="${pageContext.request.contextPath}/poem-search-results">Search Archives</a></li>
                 <li><a href="${pageContext.request.contextPath}/questions">FAQ</a></li>
                 <c:choose>
@@ -19,6 +18,7 @@
                         <li><a class=getStarted href="${pageContext.request.contextPath}/logIn">Login</a></li>
                     </c:when>
                     <c:otherwise>
+                        <li><a href="${pageContext.request.contextPath}/poem-add-display">Upload Poem</a></li>
                         <li><a href="${pageContext.request.contextPath}/logOut">logout ${userName}</a></li>
                     </c:otherwise>
                 </c:choose>
