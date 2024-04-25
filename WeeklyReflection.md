@@ -380,4 +380,35 @@ Tasks completed:
 Tasks completed:
 * Reran the unit tests after adding the many-to-many relationship and all the tests failed
 * Re-watched Hibernate many-to-many videos to refresh and trouble shoot
-* 
+
+**Time spent 4/19/24**
+
+Tasks completed:
+
+**Time spent 4/20/24**
+
+Tasks completed:
+
+**Time spent 4/21/24**
+
+Tasks completed:
+---
+
+### Week 14
+
+**Time spent 4/22/24**
+
+Tasks completed:
+*
+
+**Time spent 4/23/24**
+
+Tasks completed:
+*
+
+
+**Time spent 4/24/24 5 hours**
+
+Tasks completed:
+* Today I was finally able to get Textract working in Diamond Poems! 
+* Met with Michael to introduce projects for peer code review
