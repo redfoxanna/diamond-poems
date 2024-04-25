@@ -6,6 +6,8 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.redfoxanna.auth.*;
+import com.redfoxanna.entity.User;
+import com.redfoxanna.persistence.GenericDao;
 import com.redfoxanna.util.PropertiesLoader;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
@@ -17,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -35,17 +38,17 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.RSAPublicKeySpec;
 import java.util.Base64;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Properties;
 import java.util.stream.Collectors;
 
+/**
+ * The type Auth.
+ * Inspired by: <a href="https://stackoverflow.com/questions/52144721/how-to-get-access-token-using-client-credentials-using-java-code">...</a>
+ */
 @WebServlet(
         urlPatterns = {"/auth"}
 )
-// TODO if something goes wrong it this process, route to an error page. Currently, errors are only caught and logged.
-/**
- * Inspired by: https://stackoverflow.com/questions/52144721/how-to-get-access-token-using-client-credentials-using-java-code
- */
-
 public class Auth extends HttpServlet implements PropertiesLoader {
     Properties properties;
     String CLIENT_ID;
@@ -69,34 +72,67 @@ public class Auth extends HttpServlet implements PropertiesLoader {
     /**
      * Gets the auth code from the request and exchanges it for a token containing user info.
      * @param req servlet request
-     * @param resp servlet response
+     * @param res servlet response
      * @throws ServletException
      * @throws IOException
      */
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         String authCode = req.getParameter("code");
         String userName = null;
 
+        HttpSession session = req.getSession();
+
         if (authCode == null) {
-            //TODO forward to an error page or back to the login
+            //forward to an error page
+            forwardErrorMessage(req, res, session);
         } else {
             HttpRequest authRequest = buildAuthRequest(authCode);
             try {
                 TokenResponse tokenResponse = getToken(authRequest);
                 userName = validate(tokenResponse);
                 req.setAttribute("userName", userName);
+                GenericDao<User> userDao = new GenericDao<>(User.class);
+
+                // Find username in the database
+                List<User> users = userDao.getByPropertyEqual("userName", userName);
+                if (users.size() == 1) {
+                    //Set username as a session attribute
+                    session.setAttribute("user", users.get(0));
+                    logger.info("username is session: " + userName);
+                } else {
+                    // Create a new User
+                    User newUser = new User(userName);
+                    int newUserId = userDao.insertEntity(newUser);
+                    session.setAttribute("user", userDao.getById(newUserId));
+                    logger.info("New user added to session: " + users.get(0));
+                }  //TODO would I have another scenario here? or is this ok?
             } catch (IOException e) {
                 logger.error("Error getting or validating the token: " + e.getMessage(), e);
-                //TODO forward to an error page
+                forwardErrorMessage(req, res, session);
             } catch (InterruptedException e) {
                 logger.error("Error getting token from Cognito oauth url " + e.getMessage(), e);
-                //TODO forward to an error page
+                forwardErrorMessage(req, res, session);
             }
         }
         RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
-        dispatcher.forward(req, resp);
+        dispatcher.forward(req, res);
 
+    }
+
+    /**
+     * Sets the error message in the session to forward to the user if login error
+     * @param req the request object
+     * @param res the response object
+     * @param session the current session
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void forwardErrorMessage(HttpServletRequest req, HttpServletResponse res, HttpSession session)
+            throws ServletException, IOException {
+        session.setAttribute("error message", "Oh no :-( you did not login, please try again!");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("error.jsp");
+        dispatcher.forward(req, res);
     }
 
     /**
@@ -172,9 +208,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         logger.debug("here's the username: " + userName);
 
         logger.debug("here are all the available claims: " + jwt.getClaims());
-
-        // TODO decide what you want to do with the info!
-        // for now, I'm just returning username for display back to the browser
 
         return userName;
     }
