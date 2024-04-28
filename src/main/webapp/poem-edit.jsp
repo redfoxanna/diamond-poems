@@ -4,7 +4,8 @@
 <html>
 <c:import url="header.jsp" />
 <body>
-    <h1>Textract worked!</h1>
+    <h1>Poem added to archives!</h1>
+
 
 
 
