@@ -6,7 +6,6 @@ import org.hibernate.annotations.GenericGenerator;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 
@@ -26,11 +25,11 @@ public class Poem {
     @Column(name="poem_content")
     private String content;
     @Column(name="poem_image")
-    private String poemImage;
+    private String poemImageKey;
     @Column(name="created_at")
     private Timestamp createdAt;
-    @Column(name="uploaded_by")
-    private String uploadedBy;
+    @ManyToOne
+    private User user;
     @OneToMany(mappedBy = "poem", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private Set<PoemGenre> genres = new HashSet<>();
 
@@ -43,11 +42,11 @@ public class Poem {
     /**
      * Constructor for a poem with parameters
      */
-    public Poem(String content, String poemImage, String uploadedBy) {
+    public Poem(String content, String poemImageKey, User user) {
         this.content = content;
-        this.poemImage = poemImage;
+        this.poemImageKey = poemImageKey;
         this.createdAt = Timestamp.valueOf(LocalDateTime.now());
-        this.uploadedBy = uploadedBy;
+        this.user = user;
     }
 
     /**
@@ -87,21 +86,21 @@ public class Poem {
     }
 
     /**
-     * Gets poem image.
+     * Gets poem image key to retrieve image from s3
      *
      * @return the poem image
      */
     public String getPoemImage() {
-        return poemImage;
+        return poemImageKey;
     }
 
     /**
-     * Sets poem image.
+     * Sets poem image key
      *
-     * @param poemImage the poem image
+     * @param poemImageKey the poem image
      */
-    public void setPoemImage(String poemImage) {
-        this.poemImage = poemImage;
+    public void setPoemImageKey(String poemImageKey) {
+        this.poemImageKey = poemImageKey;
     }
 
     /**
@@ -123,18 +122,19 @@ public class Poem {
 
     /**
      * Gets the user that upload the poem
+     *
      * @return the username associated with the poem
      */
-    public String getUploadedBy() {
-        return uploadedBy;
+    public User getUser() {
+        return user;
     }
 
     /**
      * Sets the user that uploaded the poem
      * @param uploadedBy the username of who uploaded the poem
      */
-    public void setUploadedBy(String uploadedBy) {
-        this.uploadedBy = uploadedBy;
+    public void setUser(User uploadedBy) {
+        this.user = uploadedBy;
     }
 
     /**
@@ -160,9 +160,9 @@ public class Poem {
         return "Poem{" +
                 "id=" + id +
                 ", content='" + content + '\'' +
-                ", poemImage='" + poemImage + '\'' +
+                ", poemImage='" + poemImageKey + '\'' +
                 ", createdAt=" + createdAt +
-                ", uploadedBy='" + uploadedBy + '\'' +
+                ", user='" + user.getUserName() + '\'' +
                 ", genres=" + genres +
                 '}';
     }
@@ -172,12 +172,12 @@ public class Poem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Poem poem = (Poem) o;
-        return id == poem.id && Objects.equals(content, poem.content) && Objects.equals(poemImage, poem.poemImage) && Objects.equals(createdAt, poem.createdAt) && Objects.equals(uploadedBy, poem.uploadedBy) && Objects.equals(genres, poem.genres);
+        return id == poem.id && Objects.equals(content, poem.content) && Objects.equals(poemImageKey, poem.poemImageKey) && Objects.equals(createdAt, poem.createdAt) && Objects.equals(user, poem.user) && Objects.equals(genres, poem.genres);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, content, poemImage, createdAt, uploadedBy, genres);
+        return Objects.hash(id, content, poemImageKey, createdAt, user, genres);
     }
 }
 

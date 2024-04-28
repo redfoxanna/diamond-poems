@@ -3,9 +3,11 @@ package com.redfoxanna.persistence;
 import com.redfoxanna.entity.Genre;
 import com.redfoxanna.entity.Poem;
 import com.redfoxanna.entity.PoemGenre;
+import com.redfoxanna.entity.User;
 import com.redfoxanna.util.Database;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -42,7 +44,7 @@ class PoemDaoTest {
 
     @Test
     void insert() {
-        Poem poemToInsert = new Poem("This is just a test","testimg.png", "redfoxanna");
+        Poem poemToInsert = new Poem("This is just a test","testimg.png", new User());
         int insertedPoemId = poemDao.insertEntity(poemToInsert);
         assertNotEquals(0, insertedPoemId);
     }

@@ -5,6 +5,7 @@ import com.redfoxanna.aws.Textract;
 import com.redfoxanna.entity.Genre;
 import com.redfoxanna.entity.Poem;
 import com.redfoxanna.entity.PoemGenre;
+import com.redfoxanna.entity.User;
 import com.redfoxanna.persistence.GenericDao;
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
@@ -13,10 +14,7 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.*;
 import java.util.*;
@@ -34,6 +32,7 @@ public class PoemAddAction extends HttpServlet {
     private S3 s3;
     private Textract textract;
     private String bucketName;
+    // TODO decide how to deal with the genres here
     private GenericDao<Genre> genreDao;
 
     private final Logger logger = LogManager.getLogger(this.getClass());
@@ -58,8 +57,9 @@ public class PoemAddAction extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // TODO don't hard code username
-        String userName = "redfoxanna";
+        HttpSession session = request.getSession();
+        String userName = (String) session.getAttribute("userName");
+        logger.info("The username from the session: " + userName);
 
         Part filePart = request.getPart("poemImage");
         InputStream fileContent = filePart.getInputStream();
@@ -74,8 +74,13 @@ public class PoemAddAction extends HttpServlet {
         String poemContent = String.join("\n", textractedValues);
         logger.info("The poem content: " + poemContent);
 
-        // TODO: Add success message to the session
-        // TODO use generic dao to insert poem into database
+        // TODO add the poem to the database
+        User uploadedBy = (User) session.getAttribute("userName");
+        Poem newPoem = new Poem(poemContent, key, uploadedBy);
+        logger.info("The new poem: " + newPoem);
+        GenericDao<Poem> poemDao = new GenericDao<>(Poem.class);
+        poemDao.insertEntity(newPoem);
+
 
         String url = "/poem-edit.jsp";
         response.sendRedirect(request.getContextPath() + url);
