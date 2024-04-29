@@ -25,8 +25,7 @@ import java.util.Properties;
 public class ApplicationStartup extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
-    // TODO load ALL properties and remove duplicate code from other classes
-    // TODO add s3 and Textract properties here
+    // TODO load ALL properties and refactor class where properties loaded
     // TODO if properties weren't loaded properly, route to an error page
     public void init() throws ServletException {
 
@@ -37,11 +36,14 @@ public class ApplicationStartup extends HttpServlet implements PropertiesLoader 
         logger.info(databaseProperties);
         Properties log4jProperties = loadProperties("/log4j2.properties");
         logger.info(log4jProperties);
+        Properties awsProperties = loadProperties("/aws.properties");
+        logger.info(awsProperties);
 
         ServletContext context = getServletContext();
 
         context.setAttribute("cognitoProperties", cognitoProperties);
         context.setAttribute("databaseProperties", databaseProperties);
         context.setAttribute("log4jProperties", log4jProperties);
+        context.setAttribute("awsProperties", awsProperties);
     }
 }
