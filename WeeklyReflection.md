@@ -381,30 +381,41 @@ Tasks completed:
 * Reran the unit tests after adding the many-to-many relationship and all the tests failed
 * Re-watched Hibernate many-to-many videos to refresh and trouble shoot
 
-**Time spent 4/19/24**
+**Time spent 4/19/24 3 hours**
 
 Tasks completed:
+* Updated formatting on the faq page
+* Updates to GenericDao
+* Worked on updating the unit tests for the new relationship mapping
 
-**Time spent 4/20/24**
+**Time spent 4/20/24 1 hour**
 
 Tasks completed:
+* Worked on unit testing issue
 
-**Time spent 4/21/24**
+**Time spent 4/21/24 3 hours**
 
 Tasks completed:
+* Unit tests all passing now
+* ApplicationStartup servlet is loading all properties except for s3 and Textract
+* Unit tests for genre class dao
+* 
 ---
 
 ### Week 14
 
-**Time spent 4/22/24**
+**Time spent 4/22/24 2 hours**
 
 Tasks completed:
-*
+* Updates to README
+* Styled poem add page
 
-**Time spent 4/23/24**
+**Time spent 4/23/24 3.5 hours**
 
 Tasks completed:
-*
+* Updates to styling
+* Updated unit tests with new Poem constructor
+* Tided up methods with javadoc
 
 
 **Time spent 4/24/24 5 hours**
@@ -412,3 +423,20 @@ Tasks completed:
 Tasks completed:
 * Today I was finally able to get Textract working in Diamond Poems! 
 * Met with Michael to introduce projects for peer code review
+
+**Time spent 4/25/24 1 hour**
+ 
+Tasks completed:
+* Got the new User classes mapped correctly with hibernate
+
+**Time spent 4/27/24 1 hour**
+
+Tasks completed:
+* Got a poem to add but having an issue getting the username to add with the poem
+
+**Time spent 4/28/24 3.5 hours**
+
+Tasks completed:
+* Completed the peer code review
+* Weekly reflections
+
