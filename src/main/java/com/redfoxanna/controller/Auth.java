@@ -65,7 +65,16 @@ public class Auth extends HttpServlet implements PropertiesLoader {
     @Override
     public void init() throws ServletException {
         super.init();
-        loadProperties();
+        properties = (Properties) getServletContext().getAttribute("cognitoProperties");
+        if (properties != null) {
+            CLIENT_ID = properties.getProperty("client.id");
+            CLIENT_SECRET = properties.getProperty("client.secret");
+            OAUTH_URL = properties.getProperty("oauthURL");
+            LOGIN_URL = properties.getProperty("loginURL");
+            REDIRECT_URL = properties.getProperty("redirectURL");
+            REGION = properties.getProperty("region");
+            POOL_ID = properties.getProperty("poolId");
+        }
         loadKey();
     }
 
@@ -96,16 +105,15 @@ public class Auth extends HttpServlet implements PropertiesLoader {
 
                 // Find username in the database
                 List<User> users = userDao.getByPropertyEqual("userName", userName);
-                if (users.size() == 1) {
-                    //Set username as a session attribute
+                if (!users.isEmpty()) {
                     session.setAttribute("user", users.get(0));
-                    logger.info("username is session: " + userName);
+                    logger.info("username set in session: " + userName);
                 } else {
                     // Create a new User
                     User newUser = new User(userName);
                     int newUserId = userDao.insertEntity(newUser);
                     session.setAttribute("user", userDao.getById(newUserId));
-                    logger.info("New user added to session: " + users.get(0));
+                    logger.info("New user created and added to session: " + users.get(0));
                 }  //TODO would I have another scenario here? or is this ok?
             } catch (IOException e) {
                 logger.error("Error getting or validating the token: " + e.getMessage(), e);
@@ -262,26 +270,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
             logger.error("Cannot load json..." + ioException.getMessage(), ioException);
         } catch (Exception e) {
             logger.error("Error loading json" + e.getMessage(), e);
-        }
-    }
-
-    /**
-     * Read in the cognito props file and get/set the client id, secret, and required urls
-     * for authenticating a user.
-     */
-    // TODO This code appears in a couple classes, consider using a startup servlet similar to adv java project
-    private void loadProperties() {
-        try {
-            properties = loadProperties("/cognito.properties");
-            CLIENT_ID = properties.getProperty("client.id");
-            CLIENT_SECRET = properties.getProperty("client.secret");
-            OAUTH_URL = properties.getProperty("oauthURL");
-            LOGIN_URL = properties.getProperty("loginURL");
-            REDIRECT_URL = properties.getProperty("redirectURL");
-            REGION = properties.getProperty("region");
-            POOL_ID = properties.getProperty("poolId");
-        } catch (Exception e) {
-            logger.error("Error loading properties" + e.getMessage(), e);
         }
     }
 }
