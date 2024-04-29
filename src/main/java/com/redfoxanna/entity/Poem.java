@@ -160,9 +160,9 @@ public class Poem {
         return "Poem{" +
                 "id=" + id +
                 ", content='" + content + '\'' +
-                ", poemImage='" + poemImageKey + '\'' +
+                ", poemImageKey='" + poemImageKey + '\'' +
                 ", createdAt=" + createdAt +
-                ", user='" + user.getUserName() + '\'' +
+                ", user=" + user +
                 ", genres=" + genres +
                 '}';
     }
