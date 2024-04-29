@@ -69,19 +69,18 @@ public class PoemAddAction extends HttpServlet {
 
         s3.putS3Object(s3.getClient(), bucketName, key, saveFile.getPath());
 
-
         ArrayList<String> textractedValues = textract.getS3Text(textract.getClient(), bucketName, key);
         String poemContent = String.join("\n", textractedValues);
         logger.info("The poem content: " + poemContent);
-
-        // TODO add the poem to the database
         User uploadedBy = (User) session.getAttribute("userName");
+
+        // TODO add the poem to the database with genres
         Poem newPoem = new Poem(poemContent, key, uploadedBy);
         logger.info("The new poem: " + newPoem);
         GenericDao<Poem> poemDao = new GenericDao<>(Poem.class);
         poemDao.insertEntity(newPoem);
 
-
+        request.setAttribute("newPoem", newPoem);
         String url = "/poem-edit.jsp";
         response.sendRedirect(request.getContextPath() + url);
     }

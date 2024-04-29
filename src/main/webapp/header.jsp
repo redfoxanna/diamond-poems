@@ -5,7 +5,7 @@
         <div class="logo">
             <h1 id=nav-logo class="text-light"><a href="${pageContext.request.contextPath}"><span>Diamond Poem Archives</span></a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            <a href="index.html"><img src="images/diamond-logo.png" alt="" class="img-fluid"></a>
         </div>
         <div class="flex-container" id="nav-container">
         <nav class="navbar">
@@ -13,12 +13,12 @@
                 <li><a href="${pageContext.request.contextPath}/">Home</a></li>
                 <li><a href="${pageContext.request.contextPath}/poem-search-results">Search Archives</a></li>
                 <li><a href="${pageContext.request.contextPath}/questions">FAQ</a></li>
-                <li><a href="${pageContext.request.contextPath}/poem-add-display">Upload Poem</a></li>
                 <c:choose>
                     <c:when test="${empty userName}">
                         <li><a class=getStarted href="${pageContext.request.contextPath}/logIn">Login</a></li>
                     </c:when>
                     <c:otherwise>
+                        <li><a href="${pageContext.request.contextPath}/poem-add-display">Upload Poem</a></li>
                         <li><a href="${pageContext.request.contextPath}/logOut">logout ${userName}</a></li>
                     </c:otherwise>
                 </c:choose>

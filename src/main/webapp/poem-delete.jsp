@@ -3,7 +3,7 @@
 <html>
 <c:import url="header.jsp" />
 <body>
-    <h1>Poem added to archives:</h1>
+<h1>Poem To Delete:</h1>
 
 
 
