@@ -5,7 +5,7 @@
         <div class="logo">
             <h1 id=nav-logo class="text-light"><a href="${pageContext.request.contextPath}"><span>Diamond Poem Archives</span></a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
-            <a href="index.html"><img src="images/diamond-logo.png" alt="" class="img-fluid"></a>
+            <a href="index.html"><img src=/"images/diamond-logo.png" alt="" class="img-fluid"></a>
         </div>
         <div class="flex-container" id="nav-container">
         <nav class="navbar">
