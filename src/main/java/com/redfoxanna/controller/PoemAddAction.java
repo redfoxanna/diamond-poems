@@ -73,6 +73,7 @@ public class PoemAddAction extends HttpServlet {
         String poemContent = String.join("\n", textractedValues);
         logger.info("The poem content: " + poemContent);
         User uploadedBy = (User) session.getAttribute("userName");
+        logger.info("uploadedBy: " + uploadedBy);
 
         // TODO add the poem to the database with genres
         Poem newPoem = new Poem(poemContent, key, uploadedBy);
@@ -81,9 +82,12 @@ public class PoemAddAction extends HttpServlet {
         poemDao.insertEntity(newPoem);
 
         request.setAttribute("newPoem", newPoem);
-        String url = "/poem-edit.jsp";
-        response.sendRedirect(request.getContextPath() + url);
+        String url = "/poem-edit";
+
+        // Forward the request instead of redirecting?
+        request.getRequestDispatcher(url).forward(request, response);
     }
+
 
 
     /**
