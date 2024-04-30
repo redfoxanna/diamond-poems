@@ -15,25 +15,21 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.*;
-import java.util.*;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
 
-/**
- * Servlet that handles adding a new poem to the database
- *
- * @author redfoxanna
- */
-@WebServlet(name = "addPoem",
-        urlPatterns = {"/poem-add"}
-)
+@WebServlet(name = "addPoem", urlPatterns = {"/poem-add"})
 @MultipartConfig
 public class PoemAddAction extends HttpServlet {
     private S3 s3;
     private Textract textract;
     private String bucketName;
-    // TODO decide how to deal with the genres here
     private GenericDao<Genre> genreDao;
+    private GenericDao<User> userDao; // Add User DAO
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
@@ -45,21 +41,17 @@ public class PoemAddAction extends HttpServlet {
         genreDao = new GenericDao<>(Genre.class);
         // TODO: get bucket-name from a properties file
         bucketName = "diamond-poems";
+        userDao = new GenericDao<>(User.class); // Initialize User DAO
     }
 
-    /**
-     *
-     * @param request the request object
-     * @param response the response object
-     * @throws ServletException if a servlet error
-     * @throws IOException if an error reading the file
-     */
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         HttpSession session = request.getSession();
         String userName = (String) session.getAttribute("userName");
         logger.info("The username from the session: " + userName);
+
+        // Get the user from the database using the username
+        User user = userDao.getByPropertyEqual("username", userName).get(0);
 
         Part filePart = request.getPart("poemImage");
         InputStream fileContent = filePart.getInputStream();
@@ -72,31 +64,22 @@ public class PoemAddAction extends HttpServlet {
         ArrayList<String> textractedValues = textract.getS3Text(textract.getClient(), bucketName, key);
         String poemContent = String.join("\n", textractedValues);
         logger.info("The poem content: " + poemContent);
-        User uploadedBy = (User) session.getAttribute("userName");
-        logger.info("uploadedBy: " + uploadedBy);
 
-        // TODO add the poem to the database with genres
-        Poem newPoem = new Poem(poemContent, key, uploadedBy);
+        // Create a new Poem object with the associated user
+        Poem newPoem = new Poem(poemContent, key, user);
         logger.info("The new poem: " + newPoem);
+
+        // Insert the new poem into the database
         GenericDao<Poem> poemDao = new GenericDao<>(Poem.class);
         poemDao.insertEntity(newPoem);
 
         request.setAttribute("newPoem", newPoem);
-        String url = "/poem-edit";
+        String url = "/poem-edit.jsp";
 
-        // Forward the request instead of redirecting?
+        // Forward the request instead of redirecting
         request.getRequestDispatcher(url).forward(request, response);
     }
 
-
-
-    /**
-     * Creates a temporary file on the server
-     * @param initialStream the initial file stream
-     * @param filePath the path to the file
-     * @return the file
-     * @throws IOException if an error reading the file
-     */
     private File writeTmpFile(InputStream initialStream, String filePath) throws IOException {
         File targetFile = File.createTempFile(filePath, null);
         OutputStream outStream = new FileOutputStream(targetFile);
