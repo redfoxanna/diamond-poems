@@ -100,10 +100,10 @@ public class Auth extends HttpServlet implements PropertiesLoader {
             try {
                 TokenResponse tokenResponse = getToken(authRequest);
                 userName = validate(tokenResponse);
-                req.setAttribute("userName", userName);
+                session.setAttribute("userName", userName);
                 GenericDao<User> userDao = new GenericDao<>(User.class);
 
-                // Find username in the database
+                // Find username in the database from User table
                 List<User> users = userDao.getByPropertyEqual("userName", userName);
                 if (!users.isEmpty()) {
                     session.setAttribute("user", users.get(0));
@@ -125,7 +125,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         }
         RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
         dispatcher.forward(req, res);
-
     }
 
     /**
