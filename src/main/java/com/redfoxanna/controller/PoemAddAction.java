@@ -7,6 +7,7 @@ import com.redfoxanna.entity.Poem;
 import com.redfoxanna.entity.PoemGenre;
 import com.redfoxanna.entity.User;
 import com.redfoxanna.persistence.GenericDao;
+import com.redfoxanna.util.PropertiesLoader;
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,14 +23,17 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
-@WebServlet(name = "addPoem", urlPatterns = {"/poem-add"})
+/**
+ * The type Poem add action.
+ */
+@WebServlet(name = "addPoem",
+        urlPatterns = {"/poem-add"})
 @MultipartConfig
-public class PoemAddAction extends HttpServlet {
+public class PoemAddAction extends HttpServlet implements PropertiesLoader {
     private S3 s3;
     private Textract textract;
     private String bucketName;
-    private GenericDao<Genre> genreDao;
-    private GenericDao<User> userDao; // Add User DAO
+    private GenericDao<User> userDao;
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
@@ -38,12 +42,18 @@ public class PoemAddAction extends HttpServlet {
         super.init();
         s3 = new S3();
         textract = new Textract();
-        genreDao = new GenericDao<>(Genre.class);
-        // TODO: get bucket-name from a properties file
+        // TODO: get bucket-name from the properties file
         bucketName = "diamond-poems";
-        userDao = new GenericDao<>(User.class); // Initialize User DAO
+        userDao = new GenericDao<>(User.class);
     }
 
+    /**
+     * Adds a new poem to the database after processing with Textract
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -51,7 +61,7 @@ public class PoemAddAction extends HttpServlet {
         logger.info("The username from the session: " + userName);
 
         // Get the user from the database using the username
-        User user = userDao.getByPropertyEqual("username", userName).get(0);
+        User user = userDao.getByPropertyEqual("userName", userName).get(0);
 
         Part filePart = request.getPart("poemImage");
         InputStream fileContent = filePart.getInputStream();
@@ -80,6 +90,13 @@ public class PoemAddAction extends HttpServlet {
         request.getRequestDispatcher(url).forward(request, response);
     }
 
+    /**
+     * Writes the textracted results to a temp file to save memory
+     * @param initialStream
+     * @param filePath
+     * @return
+     * @throws IOException
+     */
     private File writeTmpFile(InputStream initialStream, String filePath) throws IOException {
         File targetFile = File.createTempFile(filePath, null);
         OutputStream outStream = new FileOutputStream(targetFile);

@@ -21,7 +21,6 @@
         @Column(name = "is_admin")
         private boolean isAdmin;
 
-        // TODO if I delete a user I probably don't want to delete the poems...
         @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.EAGER)
         private Set<Poem> userPoems = new HashSet<>();
 

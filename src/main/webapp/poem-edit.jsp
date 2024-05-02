@@ -18,6 +18,7 @@
                 <label for="poemContent">Edit poem below for errors:</label><br>
                 <textarea class="form-control" id="poemContent" name="poemContent" rows="10" cols="50">${newPoem.content}</textarea>
             </div>
+            <!-- TODO you need to add a way here for the user to edit/add genres if they want to  -->
             <br>
             <button type="submit" class="btn btn-primary">Update Poem</button>
         </form>
