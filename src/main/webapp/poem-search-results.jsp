@@ -17,12 +17,14 @@
         <thead>
         <th>Created at</th>
         <th>Poem</th>
+        <th>Upload by</th>
         </thead>
         <tbody>
         <c:forEach var="poem" items="${poems}">
             <tr>
                 <td>${poem.createdAt}</td>
                 <td>${poem.content}</td>
+                <td>${poem.user.userName}</td>
             </tr>
         </c:forEach>
         </tbody>
