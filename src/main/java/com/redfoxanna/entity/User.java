@@ -18,6 +18,9 @@
         @Column(name = "user_name")
         private String userName;
 
+        @Column(name = "is_admin")
+        private boolean isAdmin;
+
         // TODO if I delete a user I probably don't want to delete the poems...
         @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.EAGER)
         private Set<Poem> userPoems = new HashSet<>();
@@ -71,6 +74,22 @@
          */
         public void setUserName(String userName) {
             this.userName = userName;
+        }
+
+        /**
+         * Checks if user is admin
+         * @return true or false for admin status
+         */
+        public boolean isAdmin() {
+            return isAdmin;
+        }
+
+        /**
+         * Sets a user as an admin
+         * @param admin the admin status
+         */
+        public void setAdmin(boolean admin) {
+            isAdmin = admin;
         }
 
         /**
