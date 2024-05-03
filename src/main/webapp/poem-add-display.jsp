@@ -163,7 +163,7 @@
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value=24"" id="genre24" name="selectedGenres">
+                        <input class="form-check-input" type="checkbox" value="24" id="genre24" name="selectedGenres">
                         <label class="form-check-label" for="genre24">
                             Dark
                         </label>
