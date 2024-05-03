@@ -12,10 +12,6 @@ import java.util.Objects;
 @Entity(name = "PoemGenre")
 @Table(name = "poem_genre")
 public class PoemGenre implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name = "native")
-    private int id;
 
     @Id
     @ManyToOne
@@ -42,24 +38,6 @@ public class PoemGenre implements Serializable {
     public PoemGenre(Poem poem, Genre genre) {
         this.poem = poem;
         this.genre = genre;
-    }
-
-    /**
-     * Gets id.
-     *
-     * @return the id
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * Sets id.
-     *
-     * @param id the id
-     */
-    public void setId(int id) {
-        this.id = id;
     }
 
     /**

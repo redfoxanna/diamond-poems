@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * The type Poem add action.
@@ -34,6 +35,8 @@ public class PoemAddAction extends HttpServlet implements PropertiesLoader {
     private Textract textract;
     private String bucketName;
     private GenericDao<User> userDao;
+    private GenericDao<Genre> genreDao;
+    private GenericDao<PoemGenre> poemGenreDao;
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
@@ -45,6 +48,7 @@ public class PoemAddAction extends HttpServlet implements PropertiesLoader {
         // TODO: get bucket-name from the properties file
         bucketName = "diamond-poems";
         userDao = new GenericDao<>(User.class);
+        genreDao = new GenericDao<>(Genre.class);
     }
 
     /**
@@ -63,14 +67,18 @@ public class PoemAddAction extends HttpServlet implements PropertiesLoader {
         // Get the user from the database using the username
         User user = userDao.getByPropertyEqual("userName", userName).get(0);
 
+        // TODO create a separate method for this stuff
+        // Images processing starts here
         Part filePart = request.getPart("poemImage");
         InputStream fileContent = filePart.getInputStream();
 
+        // Makes the s3 key with the username
         String key = s3.makeKey(userName);
         File saveFile = writeTmpFile(fileContent, key);
 
         s3.putS3Object(s3.getClient(), bucketName, key, saveFile.getPath());
 
+        // Gets textracted values and assigns it to the poem content
         ArrayList<String> textractedValues = textract.getS3Text(textract.getClient(), bucketName, key);
         String poemContent = String.join("\n", textractedValues);
         logger.info("The poem content: " + poemContent);
@@ -82,7 +90,38 @@ public class PoemAddAction extends HttpServlet implements PropertiesLoader {
         // Insert the new poem into the database
         GenericDao<Poem> poemDao = new GenericDao<>(Poem.class);
         poemDao.insertEntity(newPoem);
+        // Get the id of the new poem
+        int newPoemId = newPoem.getId();
+        logger.info("The new poem id: " + newPoemId);
+        // Set newPoemId as request attribute
+        request.setAttribute("newPoemId", newPoemId);
 
+        // Gets the user selected genres from the form submission THIS IS WORKING
+        String[] selectedGenreIds = request.getParameterValues("selectedGenres");
+        logger.info("The selected genres: " + Arrays.toString(selectedGenreIds));
+
+        // Associate selected genres with the new poem
+        if (selectedGenreIds != null) {
+            for (String genreId : selectedGenreIds) {
+                if (genreId != null && !genreId.isEmpty()) { // Check if genreId is not null or empty
+                    try {
+                        // Get the Genre object from the genreId
+                        int id = Integer.parseInt(genreId);
+                        Genre genre = genreDao.getById(id);
+
+                        // Create a new PoemGenre object with the new poem and genre
+                        PoemGenre poemGenre = new PoemGenre(newPoem, genre);
+
+                        // Save the PoemGenre object to associate genre with the poem
+                        poemGenreDao.insertEntity(poemGenre);
+                    } catch (NumberFormatException e) {
+                        // Handle invalid genreId (non-numeric)
+                        // Log or handle the exception as needed
+                        logger.error("Invalid genre ID: " + genreId, e);
+                    }
+                }
+            }
+        }
         request.setAttribute("newPoem", newPoem);
         String url = "/poem-edit.jsp";
 
