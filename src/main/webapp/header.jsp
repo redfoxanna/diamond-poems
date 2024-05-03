@@ -18,6 +18,7 @@
                     </c:when>
                     <c:otherwise>
                         <li><a href="${pageContext.request.contextPath}/poem-add-display">Upload Poem</a></li>
+                        <li><a href="${pageContext.request.contextPath}/user-poems">My Poems</a></li>
                         <li><a href="${pageContext.request.contextPath}/logOut">logout ${userName}</a></li>
                     </c:otherwise>
                 </c:choose>
