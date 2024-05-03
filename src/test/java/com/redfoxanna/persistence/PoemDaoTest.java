@@ -19,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PoemDaoTest {
 
     GenericDao<Poem> poemDao;
+    GenericDao<User> userDao;
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     @BeforeEach
@@ -45,6 +46,7 @@ class PoemDaoTest {
     @Ignore
     void insert() {
         User newUser = new User("annabanana");
+        int newUserId = userDao.insertEntity(newUser);
         Poem poemToInsert = new Poem("This is just a test","testimg.png", newUser);
         int insertedPoemId = poemDao.insertEntity(poemToInsert);
         assertNotEquals(0, insertedPoemId);

@@ -107,7 +107,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
                 List<User> users = userDao.getByPropertyEqual("userName", userName);
                 if (!users.isEmpty()) {
                     session.setAttribute("user", users.get(0));
-                    logger.info("username set in session: " + userName);
                 } else {
                     // Create a new User
                     User newUser = new User(userName);
@@ -155,7 +154,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
 
         response = client.send(authRequest, HttpResponse.BodyHandlers.ofString());
 
-
         logger.debug("Response headers: " + response.headers().toString());
         logger.debug("Response body: " + response.body().toString());
 
@@ -164,7 +162,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         logger.debug("Id token: " + tokenResponse.getIdToken());
 
         return tokenResponse;
-
     }
 
     /**

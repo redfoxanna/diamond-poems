@@ -40,11 +40,6 @@ public class PoemSearchResultsServlet extends HttpServlet {
         List<Poem> poems = poemDao.getAll();
         request.setAttribute("poems", poems);
 
-        // Log each poem separately
-        for (Poem poem : poems) {
-            logger.debug("Poem ID: " + poem.getId() + ", Content: " + poem.getContent());
-        }
-
         String url = "/poem-search-results.jsp";
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);

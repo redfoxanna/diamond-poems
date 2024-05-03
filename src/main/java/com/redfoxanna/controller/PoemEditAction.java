@@ -45,10 +45,12 @@ public class PoemEditAction extends HttpServlet {
 
             // Log success message
             logger.info("Poem updated successfully: " + poem);
+            request.setAttribute("newPoemEdit", poem);
 
             // TODO do I want this or to go somewhere else?
             // Redirect to the search results page to show all poems
-            response.sendRedirect(request.getContextPath() + "/poem-search-results.jsp");
+            String url = "/poem-edit-results.jsp";
+            request.getRequestDispatcher(url).forward(request, response);
         } else {
             // Log error message
             logger.error("Poem with ID " + poemId + " not found.");
