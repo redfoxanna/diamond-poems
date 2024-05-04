@@ -100,6 +100,7 @@ public class PoemAddAction extends HttpServlet implements PropertiesLoader {
         String[] selectedGenreIds = request.getParameterValues("selectedGenres");
         logger.info("The selected genres: " + Arrays.toString(selectedGenreIds));
 
+        // TODO genre functionality needs to be implemented
         // Associate selected genres with the new poem
         if (selectedGenreIds != null) {
             for (String genreId : selectedGenreIds) {

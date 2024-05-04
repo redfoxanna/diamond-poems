@@ -56,7 +56,6 @@ public class PoemEditAction extends HttpServlet {
             logger.info("Poem updated successfully: " + poem);
              request.setAttribute("poem", poem);
 
-            // TODO do I want this or to go somewhere else?
             // Redirect to the search results page to show all poems
             String url = "/poem-edit-results.jsp";
             request.getRequestDispatcher(url).forward(request, response);
