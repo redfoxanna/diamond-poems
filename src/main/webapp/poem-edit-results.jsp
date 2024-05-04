@@ -21,11 +21,13 @@
         <th>Upload by</th>
         </thead>
         <tbody>
+        <c:if test="${not empty poem}">
         <tr>
             <td>${poem.createdAt}</td>
             <td>${poem.content}</td>
             <td>${poem.user.userName}</td>
         </tr>
+        </c:if>
         </tbody>
     </table>
 </div>
