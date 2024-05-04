@@ -137,7 +137,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
     public void forwardErrorMessage(HttpServletRequest req, HttpServletResponse res, HttpSession session)
             throws ServletException, IOException {
         session.setAttribute("error message", "Oh no :-( you did not login, please try again!");
-        RequestDispatcher dispatcher = req.getRequestDispatcher("error.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/error.jsp");
         dispatcher.forward(req, res);
     }
 

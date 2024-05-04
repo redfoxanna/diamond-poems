@@ -4,13 +4,18 @@
 <c:set var="title" value="Poem Edit" />
 <c:import url="head.jsp" />
 
+<script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('#userPoemsTable').DataTable();
+    } );
+</script>
 <html>
 <c:import url="header.jsp" />
 
 <body>
     <div class="container-fluid">
         <h2>User Poems</h2>
-        <table id="poemTable" class="display">
+        <table id="userPoemsTable" class="display">
             <thead>
             <tr>
                 <th>Created</th>
@@ -24,8 +29,8 @@
                     <td>${poem.createdAt}</td>
                     <td>${poem.content}</td>
                     <td>
-                        <a href="edit-poem.jsp?poemId=${poem.id}">Edit</a>
-                        <a href="delete-poem?id=${poem.id}">Delete</a>
+                        <a href="poem-edit.jsp?poemId=${poem.id}" class="btn btn-primary">Edit</a>
+                        <a href="delete-poem?id=${poem.id}" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
             </c:forEach>

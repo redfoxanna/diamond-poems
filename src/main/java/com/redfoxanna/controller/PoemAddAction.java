@@ -91,10 +91,10 @@ public class PoemAddAction extends HttpServlet implements PropertiesLoader {
         GenericDao<Poem> poemDao = new GenericDao<>(Poem.class);
         poemDao.insertEntity(newPoem);
         // Get the id of the new poem
-        int newPoemId = newPoem.getId();
-        logger.info("The new poem id: " + newPoemId);
-        // Set newPoemId as request attribute
-        request.setAttribute("newPoemId", newPoemId);
+        int poemId = newPoem.getId();
+        logger.info("The new poem id: " + poemId);
+        // Set poemId as request attribute
+        request.setAttribute("poemId", poemId);
 
         // Gets the user selected genres from the form submission THIS IS WORKING
         String[] selectedGenreIds = request.getParameterValues("selectedGenres");
@@ -122,7 +122,7 @@ public class PoemAddAction extends HttpServlet implements PropertiesLoader {
                 }
             }
         }
-        request.setAttribute("newPoem", newPoem);
+        request.setAttribute("poem", newPoem);
         String url = "/poem-edit.jsp";
 
         // Forward the request instead of redirecting

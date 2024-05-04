@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Handles the editing of a poem
+ */
 @WebServlet(name = "editPoem",
         urlPatterns = {"/poem-edit"})
 public class PoemEditAction extends HttpServlet {
@@ -24,6 +27,13 @@ public class PoemEditAction extends HttpServlet {
         poemDao = new GenericDao<>(Poem.class);
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -40,12 +50,11 @@ public class PoemEditAction extends HttpServlet {
             // Update the content of the Poem object with the new content
             poem.setContent(updatedContent);
 
-            // Update the Poem object in the database
+            // Update the Poem in the database
             poemDao.update(poem);
 
-            // Log success message
             logger.info("Poem updated successfully: " + poem);
-            request.setAttribute("newPoemEdit", poem);
+             request.setAttribute("poem", poem);
 
             // TODO do I want this or to go somewhere else?
             // Redirect to the search results page to show all poems

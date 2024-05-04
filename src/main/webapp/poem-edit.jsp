@@ -9,14 +9,14 @@
 
 <body>
 <div class="container-fluid">
-    <h2>Poem added to archives:</h2>
-    <c:if test="${not empty newPoem}">
+    <h2>Edit Poem:</h2>
+    <c:if test="${not empty poem}">
         <form action="poem-edit" method="post">
             <!-- Hidden input field to send the poemId -->
-            <input type="hidden" name="poemId" value="${newPoem.id}">
+            <input type="hidden" name="poemId" value="${poem.id}">
             <div class="form-group">
                 <label for="poemContent">Edit poem below for errors:</label><br>
-                <textarea class="form-control" id="poemContent" name="poemContent" rows="10" cols="50">${newPoem.content}</textarea>
+                <textarea class="form-control" id="poemContent" name="poemContent" rows="10" cols="50">${poem.content}</textarea>
             </div>
             <!-- TODO you need to add a way here for the user to edit/add genres if they want to  -->
             <br>

@@ -4,7 +4,7 @@
 
 <script type="text/javascript" class="init">
     $(document).ready( function () {
-        $('#poemTable').DataTable();
+        $('#poemEditedTable').DataTable();
     } );
 </script>
 
@@ -14,7 +14,7 @@
 
 <div class="container-fluid">
     <h2>Edit Results:</h2>
-    <table id="poemTable" class="display">
+    <table id="poemEditedTable" class="display">
         <thead>
         <th>Created at</th>
         <th>Poem</th>
@@ -22,9 +22,9 @@
         </thead>
         <tbody>
         <tr>
-            <td>${newPoemEdit.createdAt}</td>
-            <td>${newPoemEdit.content}</td>
-            <td>${newPoemEdit.user.userName}</td>
+            <td>${poem.createdAt}</td>
+            <td>${poem.content}</td>
+            <td>${poem.user.userName}</td>
         </tr>
         </tbody>
     </table>
