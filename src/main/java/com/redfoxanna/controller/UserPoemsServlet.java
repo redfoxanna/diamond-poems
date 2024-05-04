@@ -14,6 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Servlet that handles getting all the poems
+ * for a user that is signed in to the application
+ */
 @WebServlet(name = "UserPoems", urlPatterns = {"/user-poems"})
 public class UserPoemsServlet extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
@@ -25,6 +29,14 @@ public class UserPoemsServlet extends HttpServlet {
         poemDao = new GenericDao<>(Poem.class);
     }
 
+    /**
+     * Uses the DAO to get the current user and finds all their
+     * poems and saves them as a request attribute before forwarding to jsp
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Retrieve currently logged-in user from session
         User currentUser = (User) request.getSession().getAttribute("user");
@@ -39,8 +51,8 @@ public class UserPoemsServlet extends HttpServlet {
             // Forward the request to the JSP page to display user poems
             request.getRequestDispatcher("/user-poems.jsp").forward(request, response);
         } else {
-            // User not logged in, redirect to login page
-            response.sendRedirect(request.getContextPath() + "/login.jsp");
+            // User not logged in, redirect to home page
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
         }
     }
 }
