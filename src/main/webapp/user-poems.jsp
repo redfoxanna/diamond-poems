@@ -29,7 +29,7 @@
                     <td>${poem.createdAt}</td>
                     <td>${poem.content}</td>
                     <td>
-                        <a href="poem-edit.jsp?poemId=${poem.id}" class="btn btn-primary">Edit</a>
+                        <a href="user-poem-edit?id=${poem.id}" class="btn btn-primary">Edit</a>
                         <a href="delete-poem?id=${poem.id}" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
