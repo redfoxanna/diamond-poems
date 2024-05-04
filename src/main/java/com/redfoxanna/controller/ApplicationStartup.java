@@ -31,13 +31,9 @@ public class ApplicationStartup extends HttpServlet implements PropertiesLoader 
 
         logger.info("Loading the application properties...");
         Properties cognitoProperties = loadProperties("/cognito.properties");
-        logger.info(cognitoProperties);
         Properties databaseProperties = loadProperties("/database.properties");
-        logger.info(databaseProperties);
         Properties log4jProperties = loadProperties("/log4j2.properties");
-        logger.info(log4jProperties);
         Properties awsProperties = loadProperties("/aws.properties");
-        logger.info(awsProperties);
 
         ServletContext context = getServletContext();
 
