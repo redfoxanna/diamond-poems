@@ -33,28 +33,33 @@ class PoemDaoTest {
     void getAll() {
         List<Poem> poems = poemDao.getAll();
         assertNotNull(poems);
-        assertEquals(5, poems.size());
+        assertEquals(16, poems.size());
     }
 
     @Test
     void getById() {
-        Poem retrievedPoem = poemDao.getById(1);
+        Poem retrievedPoem = poemDao.getById(3);
         assertNotNull(retrievedPoem);
-        assertEquals("Pineapple, on pizza, I love pizza, but not the heartburn, it burns like, hot fire, spicy", retrievedPoem.getContent());
+        assertEquals("SOMETIMES\n" +
+                "winter wanders\n" +
+                "IN BIG BOOTS\n" +
+                "clomping about clumsily on\n" +
+                "This DUMB EARTH\n" +
+                "is so\n" +
+                "FUCKED", retrievedPoem.getContent());
     }
 
-    @Ignore
+    @Test
     void insert() {
-        User newUser = new User("annabanana");
-        int newUserId = userDao.insertEntity(newUser);
-        Poem poemToInsert = new Poem("This is just a test","testimg.png", newUser);
+        User user = userDao.getById(2);
+        Poem poemToInsert = new Poem("This is just a test","testimg.png", user);
         int insertedPoemId = poemDao.insertEntity(poemToInsert);
         assertNotEquals(0, insertedPoemId);
     }
 
     @Test
     void update() {
-        Poem poemToUpdate = poemDao.getById(1);
+        Poem poemToUpdate = poemDao.getById(6);
         poemToUpdate.setContent("New Poem Content");
         poemDao.update(poemToUpdate);
         Poem updatedPoem = poemDao.getById(1);
@@ -63,9 +68,9 @@ class PoemDaoTest {
 
     @Test
     void delete() {
-        Poem poemToDelete = poemDao.getById(1);
+        Poem poemToDelete = poemDao.getById(6);
         poemDao.delete(poemToDelete);
-        assertNull(poemDao.getById(1));
+        assertNull(poemDao.getById(6));
     }
 
 }
