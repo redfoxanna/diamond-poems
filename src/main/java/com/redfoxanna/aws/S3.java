@@ -14,6 +14,11 @@ import java.io.File;
 import java.time.LocalDate;
 import java.util.UUID;
 
+/**
+ * Provides utilities for interacting with Amazon S3.
+ * This class encapsulates functionality related to file upload to an S3 bucket.
+ * @author redfoxanna
+ */
 public class S3 {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
@@ -87,8 +92,6 @@ public class S3 {
                 userName,
                 randomId);
     }
-
-
 
     /**
      * Uploads a file from local storage to diamond-poems s3 bucket

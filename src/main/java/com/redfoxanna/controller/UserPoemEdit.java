@@ -12,6 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Servlet implementation class UserPoemEdit.
+ * This servlet handles the editing of a poem by a user.
+ * @author redfoxanna
+ */
 @WebServlet("/user-poem-edit")
 public class UserPoemEdit extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
@@ -23,6 +28,14 @@ public class UserPoemEdit extends HttpServlet {
         poemDao = new GenericDao<>(Poem.class);
     }
 
+    /**
+     * Handles HTTP GET requests for editing a poem by a user.
+     *
+     * @param request  the HTTP request
+     * @param response the HTTP response
+     * @throws ServletException if an error occurs while processing the request
+     * @throws IOException      if an I/O error occurs while sending or receiving the response
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Retrieve poem ID from request parameters
         int poemId = Integer.parseInt(request.getParameter("id"));

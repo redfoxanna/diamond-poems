@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Servlet for forwarding to an error page
+ * @author redfoxanna
+ */
 @WebServlet(
         name = "error",
         urlPatterns = {"/error"}

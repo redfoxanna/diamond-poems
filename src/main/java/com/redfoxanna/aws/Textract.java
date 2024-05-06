@@ -16,10 +16,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.UUID;
 
-
 /**
+ * Provides methods to interact with Amazon Textract for extracting text and other data from documents.
+ * This class encapsulates functionality related to document analysis and text extraction using Amazon Textract.
+ * Inspired by: https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/get-started.html
  *
- * https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/get-started.html
+ * @author redfoxanna
  */
 public class Textract {
     private final Logger logger = LogManager.getLogger(this.getClass());
@@ -78,12 +80,12 @@ public class Textract {
     }
 
     /**
-     * Gets s 3 text.
+     * Extracts text content from an S3 document using Amazon Textract.
      *
-     * @param textractClient the textract client
-     * @param bucketName     the bucket name
-     * @param docName        the doc name
-     * @return the s 3 text
+     * @param textractClient The Textract client used to interact with Amazon Textract.
+     * @param bucketName     The name of the S3 bucket containing the document.
+     * @param docName        The name of the document stored in the S3 bucket.
+     * @return A list of lines extracted from the document.
      */
     public ArrayList<String> getS3Text(TextractClient textractClient, String bucketName, String docName) {
         try {
@@ -120,6 +122,7 @@ public class Textract {
     }
 
     /**
+     * Extracts the relevant text lines from a Textract block
      * <a href="https://docs.aws.amazon.com/textract/latest/dg/API_Block.html">...</a>
      * @param block the block of text
      * @param lines the individual lines from that block

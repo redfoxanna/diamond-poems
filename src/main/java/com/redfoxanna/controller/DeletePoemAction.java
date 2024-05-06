@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * The type Delete poem action.
+ * @author redfoxanna
+ */
 @WebServlet(name = "DeletePoemAction",
         urlPatterns = {"/delete-poem"})
 public class DeletePoemAction extends HttpServlet {
@@ -24,6 +28,13 @@ public class DeletePoemAction extends HttpServlet {
         poemDao = new GenericDao<>(Poem.class);
     }
 
+    /**
+     * Handles the deletion of a poem
+     * @param request the HTTP request
+     * @param response the HTTP response
+     * @throws ServletException if an error while processing request
+     * @throws IOException if an i/o exception
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Retrieve the ID of the poem to be deleted from the request parameters
         int poemId = Integer.parseInt(request.getParameter("id"));

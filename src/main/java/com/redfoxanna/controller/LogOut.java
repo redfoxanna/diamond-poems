@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * Logs a user out by removing them from the session
+ * @author redfoxanna
+ */
 @WebServlet(
         urlPatterns = {"/logOut"}
 )
@@ -24,8 +28,8 @@ public class LogOut extends HttpServlet implements PropertiesLoader {
      * Remove User object from session, redirect to the home page
      * @param req servlet request
      * @param resp servlet response
-     * @throws ServletException
-     * @throws IOException
+     * @throws ServletException if an error occues while processing the request
+     * @throws IOException if an i/o exception
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

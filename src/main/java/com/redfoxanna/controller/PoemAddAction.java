@@ -25,7 +25,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * The type Poem add action.
+ * Servlet implementation class PoemAddAction.
+ * This servlet handles the addition of a new poem, including processing images with Textract.
+ * @author redfoxanna
  */
 @WebServlet(name = "addPoem",
         urlPatterns = {"/poem-add"})
@@ -52,11 +54,12 @@ public class PoemAddAction extends HttpServlet implements PropertiesLoader {
     }
 
     /**
-     * Adds a new poem to the database after processing with Textract
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
+     * Handles HTTP POST requests for adding a new poem, including image processing with Textract.
+     *
+     * @param request  the HTTP request
+     * @param response the HTTP response
+     * @throws ServletException if an error occurs while processing the request
+     * @throws IOException      if an I/O error occurs while sending or receiving the response
      */
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -131,11 +134,12 @@ public class PoemAddAction extends HttpServlet implements PropertiesLoader {
     }
 
     /**
-     * Writes the textracted results to a temp file to save memory
-     * @param initialStream
-     * @param filePath
-     * @return
-     * @throws IOException
+     * Writes the Textracted results to a temporary file to save memory.
+     *
+     * @param initialStream the input stream containing Textracted results
+     * @param filePath      the file path for the temporary file
+     * @return the temporary file
+     * @throws IOException if an I/O error occurs while writing the file
      */
     private File writeTmpFile(InputStream initialStream, String filePath) throws IOException {
         File targetFile = File.createTempFile(filePath, null);

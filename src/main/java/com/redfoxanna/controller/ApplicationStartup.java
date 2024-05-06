@@ -25,7 +25,6 @@ import java.util.Properties;
 public class ApplicationStartup extends HttpServlet implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
-    // TODO load ALL properties and refactor class where properties loaded
     // TODO if properties weren't loaded properly, route to an error page
     public void init() throws ServletException {
 

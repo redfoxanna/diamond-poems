@@ -14,6 +14,7 @@ import java.io.IOException;
 
 /**
  * Handles the editing of a poem
+ * @author redfoxanna
  */
 @WebServlet(name = "editPoem",
         urlPatterns = {"/poem-edit"})
@@ -28,11 +29,12 @@ public class PoemEditAction extends HttpServlet {
     }
 
     /**
+     * Handles HTTP POST requests for editing a poem.
      *
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
+     * @param request  the HTTP request
+     * @param response the HTTP response
+     * @throws ServletException if an error occurs while processing the request
+     * @throws IOException      if an I/O error occurs while sending or receiving the response
      */
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

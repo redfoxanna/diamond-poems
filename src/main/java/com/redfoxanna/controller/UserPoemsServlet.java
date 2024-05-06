@@ -17,6 +17,7 @@ import java.util.List;
 /**
  * Servlet that handles getting all the poems
  * for a user that is signed in to the application
+ * @author redfoxanna
  */
 @WebServlet(name = "UserPoems", urlPatterns = {"/user-poems"})
 public class UserPoemsServlet extends HttpServlet {
@@ -32,10 +33,10 @@ public class UserPoemsServlet extends HttpServlet {
     /**
      * Uses the DAO to get the current user and finds all their
      * poems and saves them as a request attribute before forwarding to jsp
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
+     * @param request  the HTTP request
+     * @param response the HTTP response
+     * @throws ServletException if an error occurs while processing the request
+     * @throws IOException      if an I/O error occurs while sending or receiving the response
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Retrieve currently logged-in user from session
