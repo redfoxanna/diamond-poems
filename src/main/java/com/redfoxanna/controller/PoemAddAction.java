@@ -71,19 +71,21 @@ public class PoemAddAction extends HttpServlet implements PropertiesLoader {
         User user = userDao.getByPropertyEqual("userName", userName).get(0);
 
         // TODO create a separate method for this stuff
-        // Images processing starts here
+        // Images processing starts here by getting the upload file part from the request
         Part filePart = request.getPart("poemImage");
+        // Gets input stream of uploaded file
         InputStream fileContent = filePart.getInputStream();
 
-        // Makes the s3 key with the username
+        // Makes the unique s3 key with the username
         String key = s3.makeKey(userName);
+        //Write the uploaded file to a temporary file on the server
         File saveFile = writeTmpFile(fileContent, key);
-
+        // Upload the temporary file to the s3 bucket
         s3.putS3Object(s3.getClient(), bucketName, key, saveFile.getPath());
 
         // Gets textracted values and assigns it to the poem content
         ArrayList<String> textractedValues = textract.getS3Text(textract.getClient(), bucketName, key);
-        String poemContent = String.join("\n", textractedValues);
+        String poemContent = String.join("\n", textractedValues); // concatenates the lines to a single string
         logger.info("The poem content: " + poemContent);
 
         // Create a new Poem object with the associated user
