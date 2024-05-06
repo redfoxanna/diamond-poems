@@ -36,43 +36,43 @@ and ranking system.
 
 **Task 2:** Develop user-friendly interface for uploading images of handwritten Diamond Poems-- DONE functionally, still needs styling and for form to submit to textract
 
-**Task 3:** Research and implement OCR (Optical Character Recognition) for extracting text from uploaded images-- IN PROGRESS
+**Task 3:** Research and implement OCR (Optical Character Recognition) for extracting text from uploaded images-- DONE
 
-**Task 4:** Test image upload functionality-- IN PROGRESS, tested in AWS but not within Diamond Poems
+**Task 4:** Test image upload functionality-- DONE
 
 ---
 
 ### Week 8-9: Edit and Contributor View
 
-**Task 1:** Develop functionality for editing/making corrections to poems-- IN PROGRESS
+**Task 1:** Develop functionality for editing/making corrections to poems-- DONE
 
-**Task 2:** Implement feature to view all contributors to a poem-- TODO: Can I just use the data table?
+**Task 2:** Implement feature to view all contributors to a poem-- DONE-- used data tables
 
 **Task 3:** Test edit and contributor view functionality-- NOT YET STARTED
 
-**Task 4:** Refactor and optimize code as needed-- IN PROGRESS
+**Task 4:** Refactor and optimize code as needed-- DONE/IN PROGRESS FOR V2
 
 ---
 
 ### Week 10-13: Admin Features, Ranking System, and Final Polish
 
-**Task 1:** Implement admin features for adding/editing/deleting poems
+**Task 1:** Implement admin features for adding/editing/deleting poems-- NOT YET
 
-**Task 2:** Develop ranking system where users can vote on their favorite poems
+**Task 2:** Develop ranking system where users can vote on their favorite poems-- NOT YET
 
-**Task 3:** Design and implement display of last few poems uploaded on the homepage
+**Task 3:** Design and implement display of last few poems uploaded on the homepage-- NOT YET
 
-**Task 4:** Final testing and bug fixing
+**Task 4:** Final testing and bug fixing-- DONE
 
-**Task 5:** Documentation and preparation for deployment
+**Task 5:** Documentation and preparation for deployment-- DONE
 
 ---
 
 ### Week 14-16 Final Touches
 
-**Task 1:** Peer code reviews and edits
+**Task 1:** Peer code reviews and edits-- DONE
 
-**Task 2:** Record and give final presentation of application
+**Task 2:** Record and give final presentation of application-- DONE
 
 
 
