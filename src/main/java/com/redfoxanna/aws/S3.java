@@ -88,15 +88,17 @@ public class S3 {
                 randomId);
     }
 
-    // Uses RequestBody.fromFile to avoid loading the whole file into memory
+
 
     /**
-     *
-     * @param s3
-     * @param bucketName
-     * @param objectKey
-     * @param objectPath
-     * @return
+     * Uploads a file from local storage to diamond-poems s3 bucket
+     * Uses RequestBody.fromFile to avoid loading the whole file into memory
+     * @param s3          The S3 client used to interact with Amazon S3.
+     * @param bucketName  The name of the S3 bucket to which the file will be uploaded.
+     * @param objectKey   The key (path) under which the file will be stored in the S3 bucket.
+     * @param objectPath  The local path of the file to be uploaded.
+     * @return The ETag of the uploaded object in S3.
+     * @throws ProcessingException If an error occurs during the upload process.
      */
     public String putS3Object(S3Client s3, String bucketName, String objectKey, String objectPath) {
         try {
