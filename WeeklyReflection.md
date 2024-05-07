@@ -440,3 +440,18 @@ Tasks completed:
 * Completed the peer code review
 * Weekly reflections
 
+---
+
+### Week 15
+
+Last week of the project before I have to record the presentation and turn in version 1 of Diamond Poems!
+
+**Time spent: 10 hours**
+
+Tasks completed:
+* User poems jsp and servlet added for a single user's poems
+* Edit for both Textract and a User and delete a poem up and running
+* More work trying to get genres before deadline (in progress still)
+* jquery tables for all data
+* Go over all code and check for javadoc/tidying up code
+* Record and post my presentation video
